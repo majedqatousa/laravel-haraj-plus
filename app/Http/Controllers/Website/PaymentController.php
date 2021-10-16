@@ -46,7 +46,9 @@ class PaymentController extends Controller
             return back();
         }
         dd($request->image);
-        $requestData['image']=FileOperations::StoreFileAs('Staging/storage/website/payments',$request->image,Str::random(7));
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('website/payments'), $imageName);
+        $requestData['image']=$imageName;
         $requestData['type']=1;
         $requestData['user_id']=auth()->id();
         $requestData['paymentMethod']=1;
