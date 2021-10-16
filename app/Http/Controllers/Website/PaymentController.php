@@ -45,10 +45,8 @@ class PaymentController extends Controller
             session()->flash('failed','يجب ادخال تاريخ صالح');
             return back();
         }
-        dd($request->image);
-        $imageName = time().'.'.request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('website/payments'), $imageName);
-        $requestData['image']=$imageName;
+      
+        $requestData['image']=FileOperations::StoreFileAs('website/payments',$request->image,Str::random(7));
         $requestData['type']=1;
         $requestData['user_id']=auth()->id();
         $requestData['paymentMethod']=1;
