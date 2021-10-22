@@ -320,3 +320,6 @@ Route::get('clear', function () {
 
 
 Route::post('add_user_phone/{user_id}', 'Website\WebsiteController@update_phone')->name('add_user_phone');
+Route::get('/foo', function () {
+        Artisan::call('storage:link');
+    });
