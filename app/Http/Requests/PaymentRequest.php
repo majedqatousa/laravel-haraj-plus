@@ -44,7 +44,7 @@ class PaymentRequest extends FormRequest
           'transferee_name.required' => 'أدخل اسم المحول',
           'product_id.required' => 'أدخل رقم المنتج',
           'image.required' => 'ارفع صورة الحوالة',
-         // 'image.image' => 'ارفع صورة ذات امتداد مناسب',
+          'image.image' => 'ارفع صورة ذات امتداد مناسب',
 
 
         ];
