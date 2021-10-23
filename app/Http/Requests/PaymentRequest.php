@@ -28,7 +28,7 @@ class PaymentRequest extends FormRequest
             'transfer_date' => 'required|date',
             'transferee_name' => 'required',
 
-            'image' => 'required|image',
+        //    'image' => 'required|image',
             'bank_no' => 'required|int',];
 
 
