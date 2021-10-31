@@ -15,7 +15,7 @@ use App\Models\Contact;
 
 use Illuminate\Support\Facades\Validator;
 
-class homeController extends Controller
+class HomeController extends Controller
 {
     public function businessProduct()
     {

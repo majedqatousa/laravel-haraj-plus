@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
     
 // });
 
-Route::group(['middleware' => 'api'], function(){
-    Route::get('index','API\HomeController@index');
-});
+// Route::group(['middleware' => 'api'], function(){
+//     Route::get('index','API\HomeController@index');
+// });
 Route::resource('favorite', 'API\favoriteController')->middleware('auth:user_api');
 Route::DELETE('deleteFavorite/{id}', 'API\favoriteController@destroy')->middleware('auth:user_api');
 
@@ -73,9 +73,9 @@ Route::get('demoShowProduct/{id}', 'API\productController@demoShowProduct');
 Route::put('productStatusActive/{id}', 'API\productController@productStatusActive')->middleware('auth:user_api');
 Route::put('productStatusDeActive/{id}', 'API\productController@productStatusDeActive')->middleware('auth:user_api');
 
-Route::get('Home', 'API\homeController@businessProduct');
-Route::get('userProduct', 'API\homeController@userProduct');
-Route::get('productCreated', 'API\homeController@productCreated');
+Route::get('Home', 'API\HomeController@businessProduct');
+Route::get('userProduct', 'API\HomeController@userProduct');
+Route::get('productCreated', 'API\HomeController@productCreated');
 Route::get('productPrice/{type?}', 'API\homeController@productPriceDesc');
 Route::get('productPriceASC', 'API\homeController@productPriceASC');
 Route::post('fillterData', 'API\homeController@fillterData');
