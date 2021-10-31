@@ -18,22 +18,46 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-
+use Laravel\Passport\HasApiTokens;
+use App\Models\follower;
 class User extends Authenticatable
 {
 
     protected $table = 'users';
     public $timestamps = true;
-
-use Notifiable;
+    protected $appends = ['is_followed'];
+    use HasApiTokens, Notifiable;
 
 
     protected $fillable = array('name','address', 'email', 'phone', 'connected','city_id', 'password', 'type', 'is_active','image', 'is_promoted','code','uid');
-
+       public function getIsFollowedAttribute()
+    {
+        $is_followed = false;
+        if (Auth::guard('user_api')->check()) {
+            $is_followed = $this->userfolllow()->where('user_id', Auth('user_api')->user()->id)->count() > 0;
+        }
+        return $is_followed;
+    }
+     public function userfolllow()
+    {
+        return $this->belongsToMany(User::class, follower::class, 'user_followed', 'user_id');
+    }
     public function reports()
     {
         return $this->hasMany(Report::class);
     }
+    
+    // public function getImageAttribute()
+    // {
+         
+    //     if(!empty($this->image)){
+            
+    //         return url($this->image);
+    //     }else{
+    //       return url('vendor/download.png');  
+            
+    //     }
+    // }
 
     public function products()
     {
