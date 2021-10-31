@@ -34,7 +34,7 @@ Route::post('demoCreateAd', 'API\productController@demoStore');
 Route::get('myAds', 'API\productController@myAds')->middleware('auth:user_api');
 Route::get('storeProducts', 'API\UserApiAuthController@getProducts')->middleware('auth:user_api');
 
-Route::get('searchProducts/{key}', 'API\homeController@searchProduct');
+Route::get('searchProducts/{key}', 'API\HomeController@searchProduct');
 
 Route::post('uploadMainImage', 'API\productController@uploadMainImage')->middleware('auth:user_api');
 Route::post('updateProduct/{id}', 'API\productController@update')->middleware('auth:user_api');
@@ -76,25 +76,25 @@ Route::put('productStatusDeActive/{id}', 'API\productController@productStatusDeA
 Route::get('Home', 'API\HomeController@businessProduct');
 Route::get('userProduct', 'API\HomeController@userProduct');
 Route::get('productCreated', 'API\HomeController@productCreated');
-Route::get('productPrice/{type?}', 'API\homeController@productPriceDesc');
-Route::get('productPriceASC', 'API\homeController@productPriceASC');
-Route::post('fillterData', 'API\homeController@fillterData');
-Route::get('userPromit', 'API\homeController@userPromit');
-Route::get('productUserPromit', 'API\homeController@productUserPromit');
-Route::get('user-product', 'API\homeController@productUser');
-Route::get('city', 'API\homeController@city');
-Route::get('cityName/{id}', 'API\homeController@cityName');
+Route::get('productPrice/{type?}', 'API\HomeController@productPriceDesc');
+Route::get('productPriceASC', 'API\HomeController@productPriceASC');
+Route::post('fillterData', 'API\HomeController@fillterData');
+Route::get('userPromit', 'API\HomeController@userPromit');
+Route::get('productUserPromit', 'API\HomeController@productUserPromit');
+Route::get('user-product', 'API\HomeController@productUser');
+Route::get('city', 'API\HomeController@city');
+Route::get('cityName/{id}', 'API\HomeController@cityName');
 
-Route::get('userNotPromit', 'API\homeController@userNotPromit');
+Route::get('userNotPromit', 'API\HomeController@userNotPromit');
 Route::post('userPromitProfile', 'API\UserApiAuthController@userPromitProfile');
 Route::post('add-name', 'API\UserApiAuthController@changeName');
 Route::post('updateFcm_token', 'API\fcm_tokenController@updateFcm_token')->middleware('auth:user_api');
-Route::get('mystore/{id}', 'API\homeController@mystore')->middleware('auth:user_api');
+Route::get('mystore/{id}', 'API\HomeController@mystore')->middleware('auth:user_api');
 Route::post('pay', 'API\paymentMethodController@pay')->middleware('auth:user_api');
 Route::get('following/{id}', 'API\followController@following')->middleware('auth:user_api');
 Route::get('followers/{id}', 'API\followController@follower')->middleware('auth:user_api');
 Route::post('checkOutId', 'API\paymentMethodController@checkOutId')->middleware('auth:user_api');
-Route::post('contact-us', 'API\homeController@contact')->middleware('auth:user_api');
+Route::post('contact-us', 'API\HomeController@contact')->middleware('auth:user_api');
 Route::post('pay/bank', 'API\paymentMethodController@store')->middleware('auth:user_api');
 Route::get('getPaymentStatus', 'API\paymentMethodController@getPaymentStatus')->middleware('auth:user_api');
 Route::get('packge', 'API\paymentMethodController@packge');
