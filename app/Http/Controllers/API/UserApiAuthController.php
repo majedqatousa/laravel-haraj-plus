@@ -64,7 +64,7 @@ class UserApiAuthController extends AuthBaseController
     {
          $user = User::where("phone", $request->get('phone'))->first();
          if($user){
-               $user->is_active = 1 ; 
+               $user->is_active = 10 ; 
             //   $user->name = "name!" ; 
             //   $user->email = "email!" ; 
             //   $user->city_id = 1 ;
