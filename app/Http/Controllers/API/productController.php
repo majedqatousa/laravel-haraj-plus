@@ -504,11 +504,11 @@ class productController extends Controller
          $uploadFolder = 'products';
          $image = $request->file('image');
          $image_uploaded_path = $image->store($uploadFolder, 'public');
-         $uploadedImageResponse = array(
-            "image_name" => basename($image_uploaded_path),
-            "image_url" => Storage::disk('public')->url($image_uploaded_path),
-            "mime" => $image->getClientMimeType()
-         );
+        //  $uploadedImageResponse = array(
+        //     "image_name" => basename($image_uploaded_path),
+        //     "image_url" => Storage::disk('public')->url($image_uploaded_path),
+        //     "mime" => $image->getClientMimeType()
+        //  );
         //   $user = User::find($request->user('user_api')->id);
           $user = User::find(1866);
             if($user){
