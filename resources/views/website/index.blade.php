@@ -439,12 +439,7 @@
                                             <p>
                                                 {{$store->about}}
                                             </p>
-                                            <!-- <div class="text-center">
-
-                                                    <a  href="{{route('business-general-profile',$store->link)}}"
-                                                        class="more-link"> المزيد من التفاصيل</a>
-
-                                            </div> -->
+                                           
                                         </div>
                                     </div>
                                 </div>
