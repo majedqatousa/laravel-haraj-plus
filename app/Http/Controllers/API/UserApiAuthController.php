@@ -185,16 +185,16 @@ class UserApiAuthController extends AuthBaseController
         
           
             
-         $validator = Validator::make($request->all(), [
-            'image' => 'required|image:jpeg,png,jpg,gif,svg'
-         ]);
-         if ($validator->fails()) {
-            return response()->json([
-                'error' => 'error',
-                'user' => $msg ,
-                'image' => $request->file('image')
-                ]);
-         }
+        //  $validator = Validator::make($request->all(), [
+        //     'image' => 'required|image:jpeg,png,jpg,gif,svg'
+        //  ]);
+        //  if ($validator->fails()) {
+        //     return response()->json([
+        //         'error' => 'error',
+        //         'user' => $msg ,
+        //         'image' => $request->file('image')
+        //         ]);
+        //  }
           
          $uploadFolder = 'Users';
          $image = $request->file('image');
