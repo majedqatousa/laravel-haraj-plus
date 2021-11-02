@@ -35,7 +35,7 @@ class ProductRequest extends FormRequest
                 'price'=>'required|max:11',
                 'city_id' => 'required',
                 'category_id'=>'required',
-                "main_image"=>'required|image',
+                // "main_image"=>'required|image',
                 'is_checked'=>'required',
                 'description'=>'required|max:15000',
                 // 'video_url' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
