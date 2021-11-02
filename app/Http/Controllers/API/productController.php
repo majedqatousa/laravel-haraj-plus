@@ -509,7 +509,7 @@ class productController extends Controller
         //     "image_url" => Storage::disk('public')->url($image_uploaded_path),
         //     "mime" => $image->getClientMimeType()
         //  );
-          $user = User::find($request->user('user_api')->id);
+        //  $user = User::find($request->user('user_api')->id);
           $user = User::find(1866);
             if($user){
                 $msg = "user found ! "; 
