@@ -490,42 +490,49 @@ class productController extends Controller
         }
     }
     public function uploadMainImage(Request $request){
-         $validator = Validator::make($request->all(), [
-            'image' => 'required|image:jpeg,png,jpg,gif,svg'
-         ]);
-         if ($validator->fails()) {
-            return response()->json([
-                'error' => 'error',
-               // 'user' => $msg ,
-                'image' => $request->file('image')
-                ]);
-         }
+        //  $validator = Validator::make($request->all(), [
+        //     'image' => 'required|image:jpeg,png,jpg,gif,svg'
+        //  ]);
+        //  if ($validator->fails()) {
+        //     return response()->json([
+        //         'error' => 'error',
+        //        // 'user' => $msg ,
+        //         'image' => $request->file('image')
+        //         ]);
+        //  }
           
-         $uploadFolder = 'products';
-         $image = $request->file('image');
-         $image_uploaded_path = $image->store($uploadFolder, 'public');
+        //  $uploadFolder = 'products';
+        //  $image = $request->file('image');
+        //  $image_uploaded_path = $image->store($uploadFolder, 'public');
         //  $uploadedImageResponse = array(
         //     "image_name" => basename($image_uploaded_path),
         //     "image_url" => Storage::disk('public')->url($image_uploaded_path),
         //     "mime" => $image->getClientMimeType()
         //  );
         //   $user = User::find($request->user('user_api')->id);
-          $user = User::find(1866);
-            if($user){
-                $msg = "user found ! "; 
-                // $user->image = $image_uploaded_path; 
-                // $user->save();
-            }else{
-                $msg = "user Not found ! "; 
-            }
-          
+        //   $user = User::find(1866);
+        //     if($user){
+        //         $msg = "user found ! "; 
+        //         // $user->image = $image_uploaded_path; 
+        //         // $user->save();
+        //     }else{
+        //         $msg = "user Not found ! "; 
+        //     }
         return response()->json([
             'status' => true,
             'message' => 'Success',
-            'image' => $image_uploaded_path,
-            'user' => $msg 
+            'image' => "sdf",
+            'user' => "sdfs" 
           
         ]);
+          
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'Success',
+        //     'image' => $image_uploaded_path,
+        //     'user' => $msg 
+          
+        // ]);
     }
     public function showImage($id)
     {
