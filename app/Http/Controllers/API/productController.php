@@ -490,16 +490,16 @@ class productController extends Controller
         }
     }
     public function uploadMainImage(Request $request){
-         $validator = Validator::make($request->all(), [
-            'image' => 'required|image:jpeg,png,jpg,gif,svg'
-         ]);
-         if ($validator->fails()) {
-            return response()->json([
-                'error' => 'error',
-               // 'user' => $msg ,
-                'image' => $request->file('image')
-                ]);
-         }
+        //  $validator = Validator::make($request->all(), [
+        //     'image' => 'required|image:jpeg,png,jpg,gif,svg'
+        //  ]);
+        //  if ($validator->fails()) {
+        //     return response()->json([
+        //         'error' => 'error',
+        //        // 'user' => $msg ,
+        //         'image' => $request->file('image')
+        //         ]);
+        //  }
           
          $uploadFolder = 'products';
          $image = $request->file('image');
