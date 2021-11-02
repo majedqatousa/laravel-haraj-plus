@@ -48,7 +48,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        
+          'user_api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
         // 'providers' => [
         //   'firebaseUser' => [
         //      'driver' => 'firebaseuserprovider',
