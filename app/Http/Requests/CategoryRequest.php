@@ -32,7 +32,7 @@ class CategoryRequest extends FormRequest
 
             case 'POST':
                 return [
-                    'image' => 'required|image',
+                    // 'image' => 'required|image',
                     'name' => 'required',
                     'order' => 'required|numeric|unique:categories,order|min:1',
 
