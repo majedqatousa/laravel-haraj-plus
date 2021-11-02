@@ -17,13 +17,13 @@ class Favorite extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function getProductsAttribute()
-    // {
-    //     return $this->hasMany(Product::class);
-    // }
     public function getProductsAttribute()
     {
-        return $this->hasMany(Product::class,'id','product_id');
+        return $this->hasMany(Product::class);
     }
+    // public function getProductsAttribute()
+    // {
+    //     return $this->hasMany(Product::class,'id','product_id');
+    // }
   
 }
