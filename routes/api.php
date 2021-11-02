@@ -36,7 +36,7 @@ Route::get('storeProducts', 'API\UserApiAuthController@getProducts')->middleware
 
 Route::get('searchProducts/{key}', 'API\HomeController@searchProduct');
 
-Route::post('uploadMainImage', 'API\productController@uploadMainImage')->middleware('auth:user_api');
+Route::post('uploadMainImage', 'API\productController@uploadMainImage');
 Route::post('updateProduct/{id}', 'API\productController@update')->middleware('auth:user_api');
 Route::resource('Category', 'API\CategoryController');
 Route::get('adCategory', 'API\CategoryController@adCategory');
