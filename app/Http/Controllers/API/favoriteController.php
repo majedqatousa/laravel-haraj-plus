@@ -19,7 +19,7 @@ class favoriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showAllFavorits()
     {
         $favorite=[];
           $favorites = Favorite::where('user_id', Auth('user_api')->user()->id)->with('getProductsAttribute')->get();

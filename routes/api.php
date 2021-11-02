@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 //     Route::get('index','API\HomeController@index');
 // });
 Route::resource('favorite', 'API\favoriteController')->middleware('auth:user_api');
+Route::get('allFavorites', 'API\favoriteController@showAllFavorits')->middleware('auth:user_api');
+
 Route::DELETE('deleteFavorite/{id}', 'API\favoriteController@destroy')->middleware('auth:user_api');
 
 Route::resource('product', 'API\productController')->middleware('auth:user_api');
