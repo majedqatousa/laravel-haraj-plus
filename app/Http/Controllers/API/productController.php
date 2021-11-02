@@ -496,7 +496,7 @@ class productController extends Controller
          if ($validator->fails()) {
             return response()->json([
                 'error' => 'error',
-                'user' => $msg ,
+               // 'user' => $msg ,
                 'image' => $request->file('image')
                 ]);
          }
@@ -509,7 +509,8 @@ class productController extends Controller
             "image_url" => Storage::disk('public')->url($image_uploaded_path),
             "mime" => $image->getClientMimeType()
          );
-          $user = User::find($request->user('user_api')->id);
+        //   $user = User::find($request->user('user_api')->id);
+          $user = User::find(1866);
             if($user){
                 $msg = "user found ! "; 
                 // $user->image = $image_uploaded_path; 
