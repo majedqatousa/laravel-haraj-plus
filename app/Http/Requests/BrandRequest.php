@@ -30,7 +30,7 @@ class BrandRequest extends FormRequest
 
             case 'POST':
                 return[
-                    'image' => 'required|image',
+                    // 'image' => 'required|image',
                     'link' => 'nullable|url',
                 ];
 

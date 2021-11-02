@@ -30,7 +30,7 @@ class AdRequest extends FormRequest
 
             case 'POST':
                 return [
-                    'image' => 'required|image',
+                    // 'image' => 'required|image',
                     'link' => 'required|url',
                     'description' => 'nullable',
                     'position' => 'required',

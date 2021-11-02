@@ -30,7 +30,7 @@ class BankAccountRequest extends FormRequest
 
             case 'POST':
                 return [
-                    'logo' => 'required|image',
+                    // 'logo' => 'required|image',
                     'number' => 'required|numeric',
                     'iban_number' => 'required|string:24',
                     'name' => 'required',

@@ -453,7 +453,7 @@ class UserApiAuthController extends AuthBaseController
     public function chatImage(Request $request){
             
          $validator = Validator::make($request->all(), [
-            'image' => 'required|image:jpeg,png,jpg,gif,svg'
+            // 'image' => 'required|image:jpeg,png,jpg,gif,svg'
          ]);
          if ($validator->fails()) {
             return response()->json([
@@ -500,7 +500,7 @@ class UserApiAuthController extends AuthBaseController
     public function coverImage(Request $request){
     
             $validator = Validator::make($request->all(), [
-            'image' => 'required|image:jpeg,png,jpg,gif,svg'
+            // 'image' => 'required|image:jpeg,png,jpg,gif,svg'
          ]);
          if ($validator->fails()) {
             return response()->json([

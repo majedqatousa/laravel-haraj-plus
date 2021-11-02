@@ -25,7 +25,7 @@ class paymentMethodController extends Controller
             'money_amount' => 'required|min:1',
             'transfer_date' => 'required|date',
             'transferee_name' => 'required',
-            'image' => 'required|image',
+            // 'image' => 'required|image',
             'bank_no' => 'required|int',
         ];
         $validator = Validator::make($request->all(), $roles);

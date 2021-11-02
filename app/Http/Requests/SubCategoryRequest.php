@@ -32,7 +32,7 @@ class SubCategoryRequest extends FormRequest
 
             case 'POST':
                 return [
-                    'image' => 'required|image',
+                    // 'image' => 'required|image',
                     'name' => 'required',
                     'parent_id' => 'required',
                     'order' => 'required|numeric|unique:categories,order|min:1',
