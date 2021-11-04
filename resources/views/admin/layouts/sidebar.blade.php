@@ -131,6 +131,11 @@
                          class="fas fa-envelope"></i><span>رسائل الدعم الفني</span></a>
                     </li>
 
+                    <li @if(\Request::segment(2)=='notifications')  class="active" @endif>
+                        <a href="{{route('notifications.index')}}" title="الإشعارات"><i
+                         class="fas fa-bell"></i><span> الإشعارات</span></a>
+                    </li>
+
 
                <li @if(\Request::segment(2)=='settings')  class="active" @endif>
                     <a href="{{route('settings.index')}}" title="إعدادات
