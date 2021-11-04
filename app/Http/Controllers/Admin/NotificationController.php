@@ -12,6 +12,6 @@ class NotificationController extends Controller
         return view('admin.notifications.index');
     }
     public function send(){
-        
+        return "done "; 
     }
 }
