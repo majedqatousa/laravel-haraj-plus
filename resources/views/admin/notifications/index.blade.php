@@ -24,7 +24,7 @@
             <div class="main-white-box">
                 <h3 class="sec-title color-title"><span>إرسال إشعار</span></h3>
                 @include('alert')
-                <form class="needs-validation row border-form" id="myform" novalidate="" method="post" enctype="multipart/form-data" action="{{route('sendNotification')}}">
+                <form class="needs-validation row border-form" id="myform" novalidate="" method="get" enctype="multipart/form-data" action="{{route('sendNotification')}}">
                     @csrf
 
 
