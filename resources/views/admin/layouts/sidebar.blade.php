@@ -132,7 +132,7 @@
                     </li>
 
                     <li @if(\Request::segment(2)=='notifications')  class="active" @endif>
-                        <a href="{{route('notifications.index')}}" title="الإشعارات"><i
+                        <a href="{{route('notifications')}}" title="الإشعارات"><i
                          class="fas fa-bell"></i><span> الإشعارات</span></a>
                     </li>
 
