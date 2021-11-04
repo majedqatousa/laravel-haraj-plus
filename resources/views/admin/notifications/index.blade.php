@@ -23,6 +23,12 @@
         <div class="col-md-12 clients-grid margin-bottom-div">
             <div class="main-white-box">
                 <h3 class="sec-title color-title"><span>إرسال إشعار</span></h3>
+                @if(Session::has('notification-status'))
+                <div class="alert alert-primary" role="alert">
+                {{ Session::get('notification-status') }}
+                    </div>
+                @endif
+
                 @include('alert')
                 <form class="needs-validation row border-form" id="myform" novalidate="" method="get" enctype="multipart/form-data" action="{{route('sendNotification')}}">
                     @csrf
