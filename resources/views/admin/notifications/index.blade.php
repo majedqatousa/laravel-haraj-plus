@@ -21,12 +21,7 @@
         <!--start row-->
     <div class="row">
         <!--start div-->
-        <div class="breadcrumbes col-12">
-            <ul class="list-inline">
-                <li><a href="{{route('main')}}"><i class="fa fa-home"></i>الرئيسية</a></li>
-                <li>اضافة سلايدر</li>
-            </ul>
-        </div>
+      
         <!--end div-->
 
 
@@ -42,8 +37,8 @@
 
 
                     <div class="form-group  col-md-6">
-                        <label>الصورة<span class="starrisk">*</span></label>
-                        <input type="file" class="form-control"  name="image" required>
+                        <label>العنوان<span class="starrisk">*</span></label>
+                        <input type="text" class="form-control"  name="title" required>
                         <div class="invalid-feedback">
                             من فضلك أدخل العنوان
                         </div>
@@ -54,8 +49,8 @@
                     </div>
 
                     <div class="form-group  col-md-6">
-                        <label>العنوان<span class="starrisk"></span></label>
-                        <input type="text" class="form-control" placeholder="العنوان"  name="title" >
+                        <label>الإشعار<span class="starrisk"></span></label>
+                        <input type="text" class="form-control" placeholder="العنوان"  name="body" >
                         <div class="invalid-feedback">
                             من فضلك أدخل الإشعار
                         </div>
