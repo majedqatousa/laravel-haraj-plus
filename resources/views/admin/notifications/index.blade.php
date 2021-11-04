@@ -50,12 +50,12 @@
 
                     </div>
                     <div class=" col-md-12">
-                    @if(Session::has('notification-status'))
+               
                 <div class="alert alert-primary" role="alert">
                     <p>  {{ Session::get('notification-status') }}</p>
               
                     </div>
-                @endif
+             
                         <p>ملاحظة : ربما يستغرق إرسال الإشعار بعض الوقت، كن صبوراً </p>
                     </div>
                     <div class="form-group  margin-top-div text-center col-12">
