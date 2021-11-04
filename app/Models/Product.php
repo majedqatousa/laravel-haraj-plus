@@ -140,14 +140,14 @@ class Product extends Model
             return null;
     }
 
-    public function getCityAttribute()
-    {
-        if (empty($this->city->name)) {
-            return $this->city->name;
-        } else {
-            return null;
-        }
-    }
+    // public function getCityAttribute()
+    // {
+    //     if (empty($this->city->name)) {
+    //         return $this->city->name;
+    //     } else {
+    //         return null;
+    //     }
+    // }
 
     public function getImageAttribute()
     {
