@@ -15,7 +15,7 @@ class NotificationController extends Controller
     public function send(Request $request){
         $fcmNotification = new UserFcmTokenController();
         $fcmNotification->sendToAll($request->get('title') , $request->get('body'));
-        $request->session()->flash('notification-status', 'تم الإرسال');
+        Session::flash('notification-status', 'تم الإرسال');
         return view('admin.notifications.index');
 
 

@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="form-group  col-md-6">
-                        <label>الإشعار<span class="starrisk"></span></label>
+                        <label>الإشعار<span class="starrisk">*</span></label>
                         <input type="text" class="form-control" placeholder="الإشعار" name="body" required>
                         <div class="invalid-feedback">
                             من فضلك أدخل الإشعار
@@ -59,7 +59,7 @@
 
                     </div>
                     <div class=" col-md-12">
-                        <p>ملاحظة : ربما يستغرق إرسال الإشعار بعض الوقت ، كن صبوراً </p>
+                        <p>ملاحظة : ربما يستغرق إرسال الإشعار بعض الوقت، كن صبوراً </p>
                     </div>
 
 
