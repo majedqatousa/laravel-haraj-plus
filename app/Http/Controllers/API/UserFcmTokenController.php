@@ -199,7 +199,7 @@ class UserFcmTokenController extends Controller
         }
     }
     public function sendToAll($title , $body){
-        $users = User::all();
+        $users = User::whereNotNull('fcm_token')->get();
         foreach ($users as $user) {
             self::sendFCMNotification($user->fcm_token  ,  $title ,  $body);
         }

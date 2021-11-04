@@ -23,19 +23,9 @@
         <div class="col-md-12 clients-grid margin-bottom-div">
             <div class="main-white-box">
                 <h3 class="sec-title color-title"><span>إرسال إشعار</span></h3>
-                @if(Session::has('notification-status'))
-                <div class="alert alert-primary" role="alert">
-                    <p>  {{ Session::get('notification-status') }}</p>
-              
-                    </div>
-                @endif
-
                 @include('alert')
                 <form class="needs-validation row border-form" id="myform" novalidate="" method="get" enctype="multipart/form-data" action="{{route('sendNotification')}}">
                     @csrf
-
-
-
                     <div class="form-group  col-md-6">
                         <label>العنوان<span class="starrisk">*</span></label>
                         <input type="text" class="form-control" placeholder="العنوان" name="title" required>
@@ -60,12 +50,14 @@
 
                     </div>
                     <div class=" col-md-12">
+                    @if(Session::has('notification-status'))
+                <div class="alert alert-primary" role="alert">
+                    <p>  {{ Session::get('notification-status') }}</p>
+              
+                    </div>
+                @endif
                         <p>ملاحظة : ربما يستغرق إرسال الإشعار بعض الوقت، كن صبوراً </p>
                     </div>
-
-
-
-
                     <div class="form-group  margin-top-div text-center col-12">
                         <button type="submit" class="custom-btn">إرسال</button>
                     </div>
