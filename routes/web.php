@@ -82,7 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/status/{id}/{status}', 'Admin\UserController@status')->name('status');
         Route::get('/deleteProduct/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
         Route::resource('techs', 'Admin\TechController');
-        Route::resource('notifications', 'Admin\NotificationsController');
+        Route::get('notifications', 'Admin\NotificationsController@index');
         
         Route::get('replay', 'Admin\TechController@replayPage')->name('replay-page');
         Route::post('tech-replay/{id}', 'Admin\TechController@AdminReplay')->name('tech-replay');

@@ -22,10 +22,10 @@ class NotificationsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct(Tech $model)
-    {
-        $this->model = $model;
-    }
+    // public function __construct(Tech $model)
+    // {
+    //     $this->model = $model;
+    // }
 
     public function index()
     {
