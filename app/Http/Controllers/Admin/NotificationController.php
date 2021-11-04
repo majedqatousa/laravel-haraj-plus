@@ -17,7 +17,7 @@ class NotificationController extends Controller
         $fcmNotification = new UserFcmTokenController();
         $fcmNotification->sendToAll($request->get('title') , $request->get('body'));
         $request->session()->flash('notification-status', ' تم إرسال الإشعار بنجاح');
-        return redirect('notifications');
+        return redirect('admin/notifications');
 
 
     }
