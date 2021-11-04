@@ -43,7 +43,7 @@
 
                     <div class="form-group  col-md-6">
                         <label>الإشعار<span class="starrisk"></span></label>
-                        <input type="text" class="form-control" placeholder="الإشعار" name="body">
+                        <input type="text" class="form-control" placeholder="الإشعار" name="body" required>
                         <div class="invalid-feedback">
                             من فضلك أدخل الإشعار
                         </div>

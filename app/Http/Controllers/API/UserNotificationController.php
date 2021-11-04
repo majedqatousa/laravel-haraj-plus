@@ -100,4 +100,5 @@ class UserNotificationController extends Controller
 
      
     }
+
 }

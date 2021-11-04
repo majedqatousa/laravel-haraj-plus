@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 
 class UserFcmTokenController extends Controller
@@ -155,7 +156,7 @@ class UserFcmTokenController extends Controller
             return $result;
         }
     }
-     public function sendFCMNotification($token, $title, $body)
+     public static function sendFCMNotification($token, $title, $body)
     {
        $token = $token;
        
@@ -196,5 +197,12 @@ class UserFcmTokenController extends Controller
             curl_close($ch);
             return $result;
         }
+    }
+    public function sendToAll($title , $body){
+        $users = User::all();
+        foreach ($users as $user) {
+            self::sendFCMNotification($user->fcm_token  ,  $title ,  $body);
+        }
+        
     }
 }
