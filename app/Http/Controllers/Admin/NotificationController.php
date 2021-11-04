@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\API\UserNotificationController;
+use App\Http\Controllers\API\UserFcmTokenController;
 
 class NotificationController extends Controller
 {
@@ -13,7 +13,7 @@ class NotificationController extends Controller
         return view('admin.notifications.index');
     }
     public function send(Request $request){
-        $fcmNotification = new UserNotificationController();
+        $fcmNotification = new UserFcmTokenController();
         $fcmNotification->sendToAll($request->get('title') , $request->get('body'));
        
     }
