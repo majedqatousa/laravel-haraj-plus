@@ -25,7 +25,8 @@
                 <h3 class="sec-title color-title"><span>إرسال إشعار</span></h3>
                 @if(Session::has('notification-status'))
                 <div class="alert alert-primary" role="alert">
-                {{ Session::get('notification-status') }}
+                    <p>  {{ Session::get('notification-status') }}</p>
+              
                     </div>
                 @endif
 
