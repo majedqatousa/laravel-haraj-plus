@@ -110,51 +110,13 @@ class NotificationsController extends Controller
     public function AdminReplay($id ,Request $request)
     {
     
-        $tech =  Tech::with('replay')->where('id',$id)->first();
-        if (!isset($tech->replay)) {
-            Tech::create([
-                'user_id'=>Auth::id(),
-                'parent_id'=>$tech->id,
-                'name'=>Auth::user()->name,
-                'email'=>Auth::user()->email,
-                'subject'=>$tech->subject,
-                'message'=>$request['message']
-                ]);
-
-                $details=[
-                    'type'=>'admin-message', 
-                    'actionUrl'=>route('tech'),
-                    'message'=>'تم الرد علي رسالة الدعم الفني'];
-            
-                    Notification::send($tech->user, new adminMessageNotification($details)); 
-                 Notification::send($tech->user,new MailNotification(['line'=> $details['message'],'url'=>$details['actionUrl'],'url_text'=>'رسالة جديدة']));
-
-            }
-             else{
-                 return response()->json(['fail'=>'عفوا هذا الطلب غير موجود في الموقع']); 
-             }
-
- 
-
-         return response()->json(['success'=>'true']);
-
+      
 
     } // end of replay admin tech
     
     public function AdminReplayContact(Request $request)
     {
     
-    	$data = [
-    	    'messageUser'  => $request['messageUser'],
-    	    'messageAdmin' => $request['messageAdmin'],
-    	    'subject'      => $request['subject'],
-    	    'emailAdmin'   => Auth::user()->email,
-    	    ];
-
-        	Mail::to('infotes6@gmail.com')->send(new ContactMail($data));
-        
-         return response()->json(['success'=>'true']);
-
 
     } // end of replay admin tech    
 
