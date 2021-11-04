@@ -83,6 +83,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/deleteProduct/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
         Route::resource('techs', 'Admin\TechController');
         Route::get('notifications', 'Admin\NotificationController@index')->name('notifications');
+        Route::get('sendnotifications', 'Admin\NotificationController@send')->name('sendNotification');
         
         Route::get('replay', 'Admin\TechController@replayPage')->name('replay-page');
         Route::post('tech-replay/{id}', 'Admin\TechController@AdminReplay')->name('tech-replay');
