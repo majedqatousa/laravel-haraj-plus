@@ -13,55 +13,55 @@ class UserFcmTokenController extends Controller
      * Functionality to send notification.
      *
      */
-    public function sendNotification(Request $request, $body, $title, $subTitle)
-    {
+    // public function sendNotification(Request $request, $body, $title, $subTitle)
+    // {
         
-        $responseData = [];
+    //     $responseData = [];
 
-        define('FCM_SERVER_KEY', 'AAAA287mePc:APA91bEJGib5PcrdI2pfSR8uz24kZ0QkEgzXo6EwBClrU9yU-ZowTrVfhlrNWpmcsLzokcSNn6tNjL1MXixqwSqeX_bomV_5ZLaXX73SnzJka27ny43xB49-nBunVx2aZSNyZssMdr7i');
-        $msg = array
-        (
-            'body' => $body,
-            'title' => $title,
-            'subtitle' => $subTitle,
-            "sound" => 'Default',
-            "android_channel_id"=> "Haraj_plus_notification_channel"
-        );
-        $android = array(
-            "notification" => array(
-                "color" => '#ff0000',
-                "sound" => 'Default',
-                "channel_id" => 'Haraj_plus_notification_channel'
-            )
-        );
-        $fields = array
-        (
-            'registration_ids' => $request->get('token'),
-            'notification' => $msg,
-            'android' => $android,
-        );
-        $headers = array
-        (
-            'Authorization: key=' . FCM_SERVER_KEY,
-            'Content-Type: application/json'
-        );
-        $ch = curl_init();
+    //     define('FCM_SERVER_KEY', 'AAAA287mePc:APA91bEJGib5PcrdI2pfSR8uz24kZ0QkEgzXo6EwBClrU9yU-ZowTrVfhlrNWpmcsLzokcSNn6tNjL1MXixqwSqeX_bomV_5ZLaXX73SnzJka27ny43xB49-nBunVx2aZSNyZssMdr7i');
+    //     $msg = array
+    //     (
+    //         'body' => $body,
+    //         'title' => $title,
+    //         'subtitle' => $subTitle,
+    //         "sound" => 'Default',
+    //         "android_channel_id"=> "Haraj_plus_notification_channel"
+    //     );
+    //     $android = array(
+    //         "notification" => array(
+    //             "color" => '#ff0000',
+    //             "sound" => 'Default',
+    //             "channel_id" => 'Haraj_plus_notification_channel'
+    //         )
+    //     );
+    //     $fields = array
+    //     (
+    //         'registration_ids' => $request->get('token'),
+    //         'notification' => $msg,
+    //         'android' => $android,
+    //     );
+    //     $headers = array
+    //     (
+    //         'Authorization: key=' . FCM_SERVER_KEY,
+    //         'Content-Type: application/json'
+    //     );
+    //     $ch = curl_init();
       
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-         $result = curl_exec($ch);
-        if ($result === FALSE) {
-            curl_close($ch);
-            return 'Oops! FCM Send Error: ' . curl_error($ch);
-        } else {
-            curl_close($ch);
-            return $result;
-        }
+    //     curl_setopt($ch, CURLOPT_URL, $url);
+    //     curl_setopt($ch, CURLOPT_POST, true);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    //      $result = curl_exec($ch);
+    //     if ($result === FALSE) {
+    //         curl_close($ch);
+    //         return 'Oops! FCM Send Error: ' . curl_error($ch);
+    //     } else {
+    //         curl_close($ch);
+    //         return $result;
+    //     }
       //  return true;
 
         // for IOS
@@ -110,7 +110,7 @@ class UserFcmTokenController extends Controller
         //     curl_close($ch);
         // }
        
-    }
+    // }
     
         public function sendTestNotification($tokens)
     {
