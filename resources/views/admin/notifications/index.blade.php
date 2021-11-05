@@ -50,9 +50,9 @@
 
                     </div>
                     <div class=" col-md-12">
-                @if(Session::has('notification-status'))
+                @if(session()->has('notification-status'))
                 <div class="alert alert-primary" role="alert">
-                    <p>  {{ Session::get('notification-status') }}</p>
+                    <p>  {{ session()->get('notification-status') }}</p>
               
                     </div>
                 @endif
