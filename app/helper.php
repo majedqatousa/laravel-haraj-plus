@@ -141,17 +141,17 @@ function countProductsPerMonth(){
 function format_number($number){
 
     if (strlen($number) == 10 && starts_with($number, '05')){
-        return preg_replace('/^0/', '966', $number);
+        return preg_replace('/^0/', '+966', $number);
     }
     elseif (strlen($number) == 9 && starts_with($number, '5')){
-        return preg_replace('/^5/', '9665', $number);
+        return preg_replace('/^5/', '+96605', $number);
     }
     
     elseif (starts_with($number, '06')){
-        return preg_replace('/^06/', '966', $number);
+        return preg_replace('/^06/', '+966', $number);
     }
     elseif (starts_with($number, '00')){
-        return preg_replace('/^00/', '', $number);
+        return preg_replace('/^00/', '+', $number);
     }
    elseif (starts_with($number, '+')){
         return preg_replace('/[+]/', '', $number);
