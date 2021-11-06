@@ -139,7 +139,7 @@ function countProductsPerMonth(){
 
 
 function format_number($number){
-
+//check update 
     if (strlen($number) == 10 && starts_with($number, '05')){
         return preg_replace('/^0/', '+966', $number);
     }
