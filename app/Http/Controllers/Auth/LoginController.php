@@ -114,9 +114,11 @@ class LoginController extends Controller
           else {
 
               session()->flash('out',session('out')+1);
-            if(session('out')>=6)
+            if(session('out')>=6){
+                dd("session('out')>=6");
+                return response()->json(['msg'=>2,'success'=>0]);
+            }
 
-                  return response()->json(['msg'=>2,'success'=>0]);
             else
              return response()->json(['msg' => 'البريد الالكترونى وكلمه السر لا يتطابقان', 'success' => 0]);
           }
