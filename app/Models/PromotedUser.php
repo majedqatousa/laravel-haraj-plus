@@ -11,7 +11,11 @@ class PromotedUser extends Model
     protected $table = 'promotedUsers';
     public $timestamps = true;
     protected $fillable = array('user_id', 'about', 'cover_image', 'link', 'pakage_id','is_active', 'start_date', 'end_date');
-
+    
+    public function userDetiles()
+    {
+        return $this->belongsTo(User::class, 'user_id')->select('id', 'name', 'image', 'phone');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

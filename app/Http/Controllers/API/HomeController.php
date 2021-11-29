@@ -143,7 +143,8 @@ class HomeController extends Controller
     public function userPromit()
     {
         $businessStores = PromotedUser::select('id', 'user_id', 'about')
-          
+            ->has('userDetiles')
+            ->with('userDetiles')
             ->paginate(10);
 
         return response()->json([
