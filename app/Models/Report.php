@@ -23,7 +23,14 @@ class Report extends Model
             return $this->belongsTo(Product::class);
 
     }
-
+    public function getIsReportedAttribute()
+    {
+        $is_reported = false;
+        if (Auth::guard('user_api')->check()) {
+            $is_reported = $this->reports()->where('user_id', Auth('user_api')->user()->id)->count() > 0;
+        }
+        return $is_reported;
+    }
     public function rate()
     {
 
