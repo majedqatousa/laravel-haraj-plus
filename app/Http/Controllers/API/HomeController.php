@@ -276,11 +276,15 @@ class HomeController extends Controller
         $pagination['previousPageUrl'] = $productCreated->previousPageUrl();
         $productCreated = $product;
         $paginate = $pagination;
-        return response()->json([
-            'status' => true,
-            'message' => 'Success',
-            'data' => $productCreated, 'paginate' => $paginate
-        ]);
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'Success',
+        //     'data' => $productCreated, 'paginate' => $paginate
+        // ]);
+        return response()->json(
+            $productCreated
+             );
+
     }
     public function searchProduct(Request $request, $key){
         if(!is_null($key)){
