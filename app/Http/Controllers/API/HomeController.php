@@ -239,7 +239,7 @@ class HomeController extends Controller
     }
     public function fillterData(Request $request)
     {
-        $fromDate = $request->get('city_id');
+        $fromDate = $request->get('fromDate');
         $toDate = $request->get('toDate');
         $fromPrice = $request->get('fromPrice');
         $toPrice = $request->get('toPrice');
