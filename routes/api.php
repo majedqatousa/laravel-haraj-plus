@@ -80,7 +80,7 @@ Route::get('userProduct', 'API\HomeController@userProduct');
 Route::get('productCreated', 'API\HomeController@productCreated');
 Route::get('productPrice/{type?}', 'API\HomeController@productPriceDesc');
 Route::get('productPriceASC', 'API\HomeController@productPriceASC');
-Route::get('fillterData', 'API\HomeController@fillterData');
+Route::get('fillterData/{category_id}/{city_id}/{fromDate}/{toDate}/{fromPrice}/{toPrice}', 'API\HomeController@fillterData');
 Route::get('userPromit', 'API\HomeController@userPromit');
 Route::get('productUserPromit', 'API\HomeController@productUserPromit');
 Route::get('user-product', 'API\HomeController@productUser');
