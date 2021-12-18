@@ -244,35 +244,35 @@ class HomeController extends Controller
             ->where('city_id', $city_id)
             ->whereBetween('created_at', [$fromDate, $toDate])
             ->whereBetween('price', [$fromPrice, $toPrice])
-            ->paginate(10);
-        $product = null;
-        foreach ($productCreated as $i => $products) {
-            $product[$i]['id']    = $products->id;
-            $product[$i]['user_id']    = $products->user_id;
-            $product[$i]['name']    = $products->name;
-            $product[$i]['price']   = $products->price;
-            // $product[$i]['description']   = $products->description;
-            $product[$i]['main_image']   = url('storage/' . $products->main_image);
-            $product[$i]['company_name']   = $products->company_name;
-            $product[$i]['city']   = $products->city;
-            $product[$i]['city_id']   = $products->city_id;
+            ->get();
+        // $product = null;
+        // foreach ($productCreated as $i => $products) {
+        //     $product[$i]['id']    = $products->id;
+        //     $product[$i]['user_id']    = $products->user_id;
+        //     $product[$i]['name']    = $products->name;
+        //     $product[$i]['price']   = $products->price;
+        //     // $product[$i]['description']   = $products->description;
+        //     $product[$i]['main_image']   = url('storage/' . $products->main_image);
+        //     $product[$i]['company_name']   = $products->company_name;
+        //     $product[$i]['city']   = $products->city;
+        //     $product[$i]['city_id']   = $products->city_id;
 
-            $product[$i]['created_at']   = $products->created_at;
+        //     $product[$i]['created_at']   = $products->created_at;
 
-            $product[$i]['is_favorite']   = $products->is_joined;
-        }
-        $pagination['total'] = $productCreated->total();
-        $pagination['count'] = $productCreated->count();
-        $pagination['hasMorePages'] = $productCreated->hasMorePages();
-        $pagination['currentPage'] = $productCreated->currentPage();
-        $pagination['firstItem'] = $productCreated->firstItem();
-        $pagination['last_page_id'] = $productCreated->lastPage();
-        $pagination['per_page'] = $productCreated->perPage();
-        $pagination['nextPageUrl'] = $productCreated->nextPageUrl();
-        $pagination['onFirstPage'] = $productCreated->onFirstPage();
-        $pagination['previousPageUrl'] = $productCreated->previousPageUrl();
-        $productCreated = $product;
-        $paginate = $pagination;
+        //     $product[$i]['is_favorite']   = $products->is_joined;
+        // }
+        // $pagination['total'] = $productCreated->total();
+        // $pagination['count'] = $productCreated->count();
+        // $pagination['hasMorePages'] = $productCreated->hasMorePages();
+        // $pagination['currentPage'] = $productCreated->currentPage();
+        // $pagination['firstItem'] = $productCreated->firstItem();
+        // $pagination['last_page_id'] = $productCreated->lastPage();
+        // $pagination['per_page'] = $productCreated->perPage();
+        // $pagination['nextPageUrl'] = $productCreated->nextPageUrl();
+        // $pagination['onFirstPage'] = $productCreated->onFirstPage();
+        // $pagination['previousPageUrl'] = $productCreated->previousPageUrl();
+        // $productCreated = $product;
+        // $paginate = $pagination;
         // return response()->json([
         //     'status' => true,
         //     'message' => 'Success',
