@@ -459,6 +459,7 @@ class productController extends Controller
             $productEdit = product::findOrFAil($id);
             $productEdit->name = $request->get('name');
             $productEdit->price = $request->get('price');
+            $productEdit->is_valid = 0;
           //  $productEdit->category_id = $request->get('category_id');
             $productEdit->description = $request->get('description');
             if(!empty($request->get('mainImage'))){
