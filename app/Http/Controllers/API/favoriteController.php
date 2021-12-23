@@ -28,6 +28,8 @@ class favoriteController extends Controller
     $favorite[$key]['id']     =  $value['getProductsAttribute'][0]['id'];
     $favorite[$key]['name']     =  $value['getProductsAttribute'][0]['name'];
     $favorite[$key]['image']     =  $value['getProductsAttribute'][0]['product_image'];
+    $favorite[$key]['product_id']     =  $value['getProductsAttribute'][0]['product_id'];
+    
 
      }  
         
