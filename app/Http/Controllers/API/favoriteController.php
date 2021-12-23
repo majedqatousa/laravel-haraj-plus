@@ -25,10 +25,10 @@ class favoriteController extends Controller
           $favorites = Favorite::where('user_id', Auth('user_api')->user()->id)->with('getProductsAttribute')->get();
       
      foreach ($favorites as $key => $value) {
-    $favorite[$key]['id']     =  $value['getProductsAttribute'][0]['id'];
-    $favorite[$key]['name']     =  $value['getProductsAttribute'][0]['name'];
-    $favorite[$key]['image']     =  $value['getProductsAttribute'][0]['product_image'];
-    $favorite[$key]['product_id']     =  $value['getProductsAttribute'][0]['product_id'];
+    $favorite[$key]['id']     =  $value->id;
+    $favorite[$key]['name']     =  $value->name;
+    $favorite[$key]['image']     =  $value->image;
+    $favorite[$key]['product_id']     =  $value->prouduct_id;
     
 
      }  
