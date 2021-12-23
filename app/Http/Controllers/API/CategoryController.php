@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function subCategory($id)
     {
 
-        $subCategories = Category::findOrFail($id)->where('parent_id', $id)->orderBy('order', 'ASC')->paginate(10);
+        $subCategories = Category::findOrFail($id)->where('parent_id', $id)->orderBy('order', 'ASC')->paginate(20);
         if (empty($subCategories)) {
             return null;
         } else {
