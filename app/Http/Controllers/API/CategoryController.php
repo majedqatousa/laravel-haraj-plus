@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::where('parent_id', Null)->orderBy('order', 'ASC')->paginate(10);
+        $category = Category::where('parent_id', Null)->orderBy('order', 'ASC')->paginate(11);
         return response()->json([
             'status' => true,
             'message' => 'Success',
