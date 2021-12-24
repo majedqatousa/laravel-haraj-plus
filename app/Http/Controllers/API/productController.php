@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\Rating;
 use App\Models\Report;
+use App\Models\Setting;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -76,6 +77,8 @@ class productController extends Controller
         $promoted = User::where('id',  Auth('user_api')->user()->id)->first();
         $value = $promoted->is_promoted;
         $product_per_month = Product::where('user_id',  Auth('user_api')->user()->id)->whereMonth('created_at', date('m'))->get();
+        $settings=Setting::where('key','product_no')->all();
+        $products_no = $settings->value;
         if(is_null($promoted)){
             return ControllersService::generateProcessResponse(false, 'user error');
         }else{
@@ -92,57 +95,63 @@ class productController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $roles);
-        if (!$validator->fails()) {
+        if(count($product_per_month) == $products_no || count($product_per_month) > $products_no){
+            return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
 
-            $product = new Product();
-            $product->name = $request->get('name');
-            $product->price = $request->get('price');
-            $product->category_id = $request->get('category_id');
-            $product->description = $request->get('description');
-            $product->main_image = $request->get('main_image');
-            $product->city_id = $request->get('city_id');
-            $product->discount_ratio = $request->get('discount_ratio');
-            $product->status = $request->get('status');
-            $product->user_id =  Auth('user_api')->user()->id;
-            $product->user_promoted = $value;
-            $product->is_valid = 3;
-            $product->video = $request->get('video');
-            $product->is_checked = $request->get('is_checked');
-            $isSaved = $product->save();
-            if ($isSaved) {
-                return response()->json([
-                    'code' => 200,
-                    'product_id' => $product->id
-                    ]);
+        }else{
+            if (!$validator->fails()) {
+
+                $product = new Product();
+                $product->name = $request->get('name');
+                $product->price = $request->get('price');
+                $product->category_id = $request->get('category_id');
+                $product->description = $request->get('description');
+                $product->main_image = $request->get('main_image');
+                $product->city_id = $request->get('city_id');
+                $product->discount_ratio = $request->get('discount_ratio');
+                $product->status = $request->get('status');
+                $product->user_id =  Auth('user_api')->user()->id;
+                $product->user_promoted = $value;
+                $product->is_valid = 3;
+                $product->video = $request->get('video');
+                $product->is_checked = $request->get('is_checked');
+                $isSaved = $product->save();
+                if ($isSaved) {
+                    return response()->json([
+                        'code' => 200,
+                        'product_id' => $product->id
+                        ]);
+                        
+                       
+                }
+                else{
+                         
+                    return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
+                }
                     
-                   
-            }
-            else{
-                     
-                return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
-            }
                 
-            
-            // if (count($product_per_month) == 7 && $value == 0) {
-            //     return ControllersService::generateProcessResponse(false, 'Faild_store');
-            // } else {
-            //     $isSaved = $product->save();
-            //     if ($isSaved) {
-
-            //       //  $isImagesSaved = $this->saveStoreImages($product, $request);
-
-            //         if ($isImagesSaved) {
-            //             return ControllersService::generateProcessResponse(true, 'CREATE_SUCCESS');
-            //         } else {
-            //             // delete product if images  not saved
-            //             //$product->delete();
-            //             return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
-            //         }
-            //     }
-            // }
-        } else {
-            return ControllersService::generateValidationErrorMessage($validator->getMessageBag()->first());
+                // if (count($product_per_month) == 7 && $value == 0) {
+                //     return ControllersService::generateProcessResponse(false, 'Faild_store');
+                // } else {
+                //     $isSaved = $product->save();
+                //     if ($isSaved) {
+    
+                //       //  $isImagesSaved = $this->saveStoreImages($product, $request);
+    
+                //         if ($isImagesSaved) {
+                //             return ControllersService::generateProcessResponse(true, 'CREATE_SUCCESS');
+                //         } else {
+                //             // delete product if images  not saved
+                //             //$product->delete();
+                //             return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
+                //         }
+                //     }
+                // }
+            } else {
+                return ControllersService::generateValidationErrorMessage($validator->getMessageBag()->first());
+            }
         }
+
         }
     }
     public function demoStore(Request $request){
