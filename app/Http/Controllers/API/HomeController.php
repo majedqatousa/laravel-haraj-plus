@@ -257,7 +257,7 @@ class HomeController extends Controller
         // else if ($city_id && $toPrice && $fromPrice){
         //     $productCreated = Product::where('city_id', $city_id)->whereBetween('price', [$fromPrice, $toPrice])->get();
         // }
-        if($fromDate == null &&$toDate == null){
+        if(is_null($fromDate)&& is_null($toDate)){
             $productCreated = Product::where('category_id', $category_id)
             ->where('city_id', $city_id)
             ->whereBetween('price', [$fromPrice, $toPrice])
