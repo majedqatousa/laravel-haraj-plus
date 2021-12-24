@@ -157,13 +157,15 @@ class ProductController extends Controller
         ];
         $userNotificationController = new UserNotificationController();
         $fcmNotification =  new UserFcmTokenController();
-        $title = "رفض إعلان" ; 
-        $userNotificationController->sendNotification('يؤسفنا لا يمكن قبول إعلانك',  $title, 'إعلان', $user->id);
+       
+        $notification_title = "رفض إعلان";
+        $notification_subTitle = "إعلان";
+        $notification_body = "يؤسفنا لا يمكن قبول إعلانك";
+        
+        $userNotificationController->sendNotification($notification_body,  $notification_title, $notification_subTitle, $user->id);
         $token = $user->fcm_token;
         if(!is_null($token)){
-            $fcmNotification->sendFCMNotification($token, 'تم رفض إعلانك' , 'يؤسفنا لا يمكن قبول إعلانك');
-          
-
+            $fcmNotification->sendFCMNotification($token, $notification_title , $notification_body);
        }
         \Notification::send($user, new orderActionNotification($details));
         \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>'https://staging.haraj-plus.co','url_text'=>' الذهاب للموقع']));
@@ -195,6 +197,18 @@ class ProductController extends Controller
             'message'=>'تم الموافقة على المنتج الخاص بك',
             'image'=> 'settings/logo.png'
         ];
+        $userNotificationController = new UserNotificationController();
+        $fcmNotification =  new UserFcmTokenController();
+       
+        $notification_title = "قبول إعلان";
+        $notification_subTitle = "إعلان";
+        $notification_body = "تم الموافقة على المنتج الخاص بك";
+        
+        $userNotificationController->sendNotification($notification_body,  $notification_title, $notification_subTitle, $user->id);
+        $token = $user->fcm_token;
+        if(!is_null($token)){
+            $fcmNotification->sendFCMNotification($token, $notification_title , $notification_body);
+       }
 
         \Notification::send($user, new orderActionNotification($details));
         \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>$details['actionUrl'],'url_text'=>'مشاهدة المنتج']));
