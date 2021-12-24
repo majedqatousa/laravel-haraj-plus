@@ -17,8 +17,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Notifications\MailNotification;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\UserNotificationController;
-use App\Http\Controllers\Admin\UserFcmTokenController;
+use App\Http\Controllers\API\UserNotificationController;
+use App\Http\Controllers\API\UserFcmTokenController;
 
 class ProductController extends Controller
 {
