@@ -245,14 +245,16 @@ class HomeController extends Controller
         $toPrice = $request->get('toPrice');
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
-
-        if($fromDate == null &&$toDate == null){
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
-            ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-        
+        if($city_id){
+            $productCreated = Product::where('city_id', $city_id)->get();
         }
+        // if($fromDate == null &&$toDate == null){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->where('city_id', $city_id)
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        
+        // }
         // else if(is_null($fromPrice) && is_null($toPrice)){
         //     $productCreated = Product::where('category_id', $category_id)
         //     ->where('city_id', $city_id)
@@ -276,11 +278,11 @@ class HomeController extends Controller
         //     where('category_id', $category_id)
         //     ->get();
         // }else{
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
-            ->whereBetween('created_at', [$fromDate, $toDate])
-            ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
+            // $productCreated = Product::where('category_id', $category_id)
+            // ->where('city_id', $city_id)
+            // ->whereBetween('created_at', [$fromDate, $toDate])
+            // ->whereBetween('price', [$fromPrice, $toPrice])
+            // ->get();
         // }
      
         // $product = null;
