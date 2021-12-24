@@ -96,7 +96,10 @@ class productController extends Controller
 
         $validator = Validator::make($request->all(), $roles);
         if(count($product_per_month) == $products_no || count($product_per_month) > $products_no){
-            return ControllersService::generateProcessResponse(false, 'CREATE_FAILED');
+            return response()->json([
+                'code' => 444,
+                'message' => 'لقد تخطيت الحد المسموح به لهذا الشهر',
+                ]);
 
         }else{
             if (!$validator->fails()) {
