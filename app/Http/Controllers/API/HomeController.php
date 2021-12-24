@@ -245,7 +245,7 @@ class HomeController extends Controller
         $toPrice = $request->get('toPrice');
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
-        if($city_id && !$fromPrice && !$toPrice){
+        if($city_id && is_null($fromPrice) && is_null($toPrice)){
             $productCreated = Product::where('city_id', $city_id)->get();
         }else if($category_id){
             $productCreated = Product::where('category_id', $category_id)->get();
