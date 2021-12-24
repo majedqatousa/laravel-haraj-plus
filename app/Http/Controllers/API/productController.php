@@ -77,7 +77,7 @@ class productController extends Controller
         $promoted = User::where('id',  Auth('user_api')->user()->id)->first();
         $value = $promoted->is_promoted;
         $product_per_month = Product::where('user_id',  Auth('user_api')->user()->id)->whereMonth('created_at', date('m'))->get();
-        $settings=Setting::where('key','product_no')->all();
+        $settings=Setting::where('key','=','product_no')->all();
         $products_no = $settings->value;
         if(is_null($promoted)){
             return ControllersService::generateProcessResponse(false, 'user error');
