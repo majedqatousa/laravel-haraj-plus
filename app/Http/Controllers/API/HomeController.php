@@ -19,7 +19,7 @@ class HomeController extends Controller
 {
     public function businessProduct()
     {
-        $category = Category::orderBy('order', 'asc')->limit(7)->get();
+        $category = Category::where('parent_id', Null)->orderBy('order', 'asc')->limit(15)->get();
         $Slider = Slider::all();
 
         $businessProducts = Product::where('user_promoted', 1)->where('is_valid', 1)->orderBy('created_at', 'DESC')->limit(7)->get();
