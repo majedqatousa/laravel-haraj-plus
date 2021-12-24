@@ -243,11 +243,44 @@ class HomeController extends Controller
         $toDate = $request->get('toDate');
         $fromPrice = $request->get('fromPrice');
         $toPrice = $request->get('toPrice');
-        $productCreated = Product::where('category_id', $request->get('category_id'))
-            ->where('city_id', $request->get('city_id'))
+        $category_id = $request->get('category_id');
+        $city_id = $request->get('city_id');
+
+        if(is_null($fromDate)&&is_null($toDate)){
+            $productCreated = Product::where('category_id', $category_id)
+            ->where('city_id', $city_id)
+            ->whereBetween('price', [$fromPrice, $toPrice])
+            ->get();
+        }else if(is_null($fromPrice) && is_null($toPrice)){
+            $productCreated = Product::where('category_id', $category_id)
+            ->where('city_id', $city_id)
+            ->whereBetween('created_at', [$fromDate, $toDate])
+            ->get();
+        }else if(is_null($fromDate) && is_null($toDate) && is_null($fromPrice) && is_null($toPrice)){
+            $productCreated = Product::where('category_id', $category_id)
+            ->where('city_id', $city_id)
+            ->get();
+        }else if(is_null($category_id)){
+            $productCreated = Product::where('city_id', $city_id)
             ->whereBetween('created_at', [$fromDate, $toDate])
             ->whereBetween('price', [$fromPrice, $toPrice])
             ->get();
+        }else if(is_null($fromDate) && is_null($toDate) && is_null($fromPrice) && is_null($toPrice) && is_null($category_id)){
+            $productCreated = Product::
+            where('city_id', $city_id)
+            ->get();
+        }else if(is_null($fromDate) && is_null($toDate) && is_null($fromPrice) && is_null($toPrice) && is_null($city_id)){
+            $productCreated = Product::
+            where('category_id', $category_id)
+            ->get();
+        }else{
+            $productCreated = Product::where('category_id', $category_id)
+            ->where('city_id', $city_id)
+            ->whereBetween('created_at', [$fromDate, $toDate])
+            ->whereBetween('price', [$fromPrice, $toPrice])
+            ->get();
+        }
+     
         // $product = null;
         // foreach ($productCreated as $i => $products) {
         //     $product[$i]['id']    = $products->id;
