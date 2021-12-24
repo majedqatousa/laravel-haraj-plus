@@ -287,10 +287,10 @@ class HomeController extends Controller
         //     where('category_id', $category_id)
         //     ->get();
         // }else{
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
-            ->whereBetween('created_at', [$fromDate, $toDate])
-            ->whereBetween('price', [$fromPrice, $toPrice])
+            $productCreated = Product::orWhere('category_id', $category_id)
+            ->orWhere('city_id', $city_id)
+            ->orWhereBetween('created_at', [$fromDate, $toDate])
+            ->orWhereBetween('price', [$fromPrice, $toPrice])
             ->get();
         // }
      
