@@ -17,6 +17,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Notifications\MailNotification;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\UserNotificationController;
+use App\Http\Controllers\Admin\UserFcmTokenController;
 
 class ProductController extends Controller
 {
@@ -153,7 +155,16 @@ class ProductController extends Controller
             'type'=>'payment','message'=>"يؤسفنا لا يمكن قبول إعلانك $product->name  لتعارضه من سياسات حراج بلص",
             'image'=> 'settings/logo.png'
         ];
+        $userNotificationController = new UserNotificationController();
+        $fcmNotification =  new UserFcmTokenController();
+        $title = "رفض إعلان" ; 
+        $userNotificationController->sendNotification('يؤسفنا لا يمكن قبول إعلانك',  $title, 'إعلان', $user->id);
+        $token = $user->fcm_token;
+        if(!is_null($token)){
+            $fcmNotification->sendFCMNotification($token, 'تم رفض إعلانك' , 'يؤسفنا لا يمكن قبول إعلانك');
+          
 
+       }
         \Notification::send($user, new orderActionNotification($details));
         \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>'https://staging.haraj-plus.co','url_text'=>' الذهاب للموقع']));
 
