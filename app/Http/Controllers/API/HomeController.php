@@ -308,6 +308,10 @@ class HomeController extends Controller
             $productCreated = Product::where('city_id', $city_id)->where("is_valid" , 1)
           
             ->get();
+        }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&&is_null( $city_id)&& !is_null($fromPrice)&&!is_null($toPrice)){
+            $productCreated = Product::whereBetween('price', [$fromPrice, $toPrice])->where("is_valid" , 1)
+          
+            ->get();
         }else{
             $productCreated = Product::where('category_id', $category_id)
             ->where('city_id', $city_id)
