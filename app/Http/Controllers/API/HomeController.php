@@ -286,6 +286,10 @@ class HomeController extends Controller
             $productCreated = Product::where('category_id', $category_id)
             ->where('city_id', $city_id)
             ->get();
+        }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&& $city_id&& $fromPrice&& $toPrice){
+            $productCreated = Product::where('category_id', $category_id)
+            ->where('city_id', $city_id)
+            ->get();
         }else{
             $productCreated = Product::where('category_id', $category_id)
             ->where('city_id', $city_id)
