@@ -274,12 +274,14 @@ class HomeController extends Controller
              ->WhereBetween('created_at', [$fromDate, $toDate])
              ->whereBetween('price', [$fromPrice, $toPrice])
             ->get();
+            //done
         }else if (!is_null($fromDate)&& !is_null($toDate) && !is_null($category_id)&& is_null($city_id)&& !is_null($fromPrice)&& !is_null($toPrice)){
             $productCreated = Product::where('category_id', $category_id)
              ->WhereBetween('created_at', [$fromDate, $toDate])
              ->whereBetween('price', [$fromPrice, $toPrice])
             ->get();
-        }else if (!is_null($fromDate)&& !is_null($toDate) && is_null($category_id)&& is_null($city_id)&& !is_null($fromPrice)&& !is_null($toPrice)){
+            //done 
+        }else if ($fromDate&& $toDate && is_null($category_id)&& is_null($city_id)&&$fromPrice&& $toPrice){
             $productCreated = Product::WhereBetween('created_at', [$fromDate, $toDate])
              ->whereBetween('price', [$fromPrice, $toPrice])
             ->get();
