@@ -15,7 +15,7 @@ class StoreController extends Controller
     //
 
     public function index(){
-        return view('website.create_store',compact('package','banks'));
+        return view('website.create_store');
     }
     public function create(){
         $user = auth()->id();
