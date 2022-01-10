@@ -69,6 +69,8 @@ class Messages
         'UPDATE_SUCCESS' => 'تم التعديل بنجاح',
         'UPDATE_FAILED' => 'فشلت عملية التعديل, حاول مرة أُخرى',
 
+        'CREATE_STORE' => 'تم إنشاء متجرك بنجاح',
+        
         'NO_ACCESS_PERMISSION' => 'ليس لديك صلاحية وصول لهذا العنصر',
         'NOT_FOUND' => 'العنصر غير موجود',
         'money_amount.required' => 'أدخل مبلغ العمولة',
@@ -79,6 +81,8 @@ class Messages
         'product_id.required' => 'أدخل رقم المنتج',
         'image.required' => 'ارفع صورة الحوالة',
         'image.image' => 'ارفع صورة ذات امتداد مناسب',
+
+
     ];
 
     private static $enMessages = [

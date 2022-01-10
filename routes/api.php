@@ -95,6 +95,7 @@ Route::get('mystore/{id}', 'API\HomeController@mystore')->middleware('auth:user_
 Route::post('pay', 'API\paymentMethodController@pay')->middleware('auth:user_api');
 Route::get('following/{id}', 'API\followController@following')->middleware('auth:user_api');
 Route::get('followers/{id}', 'API\followController@follower')->middleware('auth:user_api');
+Route::get('createStore', 'API\StoreController@create')->middleware('auth:user_api');
 Route::post('checkOutId', 'API\paymentMethodController@checkOutId')->middleware('auth:user_api');
 Route::post('contact-us', 'API\HomeController@contact')->middleware('auth:user_api');
 Route::post('pay/bank', 'API\paymentMethodController@store')->middleware('auth:user_api');
