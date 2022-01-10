@@ -132,7 +132,7 @@
                                 <!--for user-->
                                 <ul class="list-unstyled">
                                     @if(auth()->user()->is_promoted==1)
-                                    <li><a  href="{{route('business-profile',auth()->id())}}" ><i class="far fa-user"></i>{{ auth()->user()->name .' متجري'}} </a>
+                                    <li><a  href="{{route('business-profile',auth()->id())}}" ><i class="fas fa-store"></i>{{ auth()->user()->name .' متجري'}} </a>
                                      @endif
                                     <li><a     href="{{route('showProfile')}}"  ><i class="far fa-user"></i>اعلاناتى</a>
 
@@ -150,8 +150,9 @@
                                     <li><a  href="{{route('edit-data')}}"><i class="fa fa-edit"></i>تعديل البيانات</a>
                                     </li>
                                         @if(auth()->user()->is_promoted==0 || auth()->user()->is_promoted==2)
-                                    <li><a  href="{{route('package')}}"><i class="far fa-sun"></i>ترقية
-                                            الحساب</a>
+                                    <li><a  href="{{route('store.index')}}"><i class="fas fa-store"></i></i>
+                                    إنشاء متجر
+                                            </a>
                                     </li>
                                         @endif
 {{--                                        @if(auth()->user()->is_promoted==0 && checkProductsNo())--}}

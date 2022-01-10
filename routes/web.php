@@ -302,6 +302,9 @@ Route::group(['middleware' => 'auth','LogoutUsers'], function () {
 });
 
  Route::get('package', 'Website\PackageController@index')->name('package');
+ Route::get('store', 'Website\StoreController@index')->name('store.index');
+ Route::get('create-store', 'Website\StoreController@create')->name('store.create');
+ 
 
 
 
