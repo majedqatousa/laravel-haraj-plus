@@ -513,42 +513,10 @@ class productController extends Controller
         //         'image' => $request->file('image')
         //         ]);
         //  }
-        // $directory = 'products';
-        $directory = 'test';
-
-        $fileNameWithExtintion = $request->file('image')->getClientOriginalName();
-        $fileName = pathinfo($fileNameWithExtintion ,PATHINFO_FILENAME);
-
-        $extintion = $request->file('image')->getClientOriginalExtension();
-        $fileNameToStore = $fileName.'_'.time().'.'.$extintion;
-        $request->file('image')->storeAs($directory , $fileNameToStore);
-        $filePath = public_path('storage/'.$directory.'/'.$fileNameToStore);
-        try {
-         
-            \Tinify\setKey(env("TINIFY_KEY"));
-            $source = \Tinify\fromFile($filePath);
-            $source->toFile($filePath);
-            $image_uploaded_path =  $directory.'/'.$fileNameToStore;
-        } catch(\Tinify\AccountException $e) {
-            dd("The error message is: " . $e->getMessage());
-            // Verify your API key and account limit.
-        } catch(\Tinify\ClientException $e) {
-            // Check your source image and request options.
-            dd("The error message is: " . $e->getMessage());
-        } catch(\Tinify\ServerException $e) {
-            // Temporary issue with the Tinify API.
-            dd("The error message is: " . $e->getMessage());
-        } catch(\Tinify\ConnectionException $e) {
-            // A network connection error occurred.
-            dd("The error message is: " . $e->getMessage());
-        } catch(Exception $e) {
-            // Something else went wrong, unrelated to the Tinify API.
-            dd("The error message is: " . $e->getMessage());
-        }
-      
-      
-        //  $image = $request->file('image');
-        //  $image_uploaded_path = $image->store($uploadFolder, 'public');
+          
+         $uploadFolder = 'products';
+         $image = $request->file('image');
+         $image_uploaded_path = $image->store($uploadFolder, 'public');
         //  $uploadedImageResponse = array(
         //     "image_name" => basename($image_uploaded_path),
         //     "image_url" => Storage::disk('public')->url($image_uploaded_path),
