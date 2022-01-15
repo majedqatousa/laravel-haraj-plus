@@ -66,7 +66,7 @@ class ProductService
         $request->file('main_image')->storeAs('products' , $fileNameToStore);
         $filePath = public_path('storage/products/'.$fileNameToStore);
 
-        $requestData['main_image'] = FileOperations::TinifyImg($this->imageDirectory, $filePath);
+        $requestData['main_image'] = FileOperations::TinifyImg($this->imageDirectory, $request->file('main_image'));
 
         $requestData['user_id'] = auth()->id();
 

@@ -35,14 +35,21 @@ class FileOperations
         Image::make('storage/'.$path)->resize($width, $height)->save('storage/'.$path);
     }*/
 
-    public static function TinifyImg($directory, $uploadedFile){
+    public static function TinifyImg($directory , $requestFile){
      
+        $fileNameWithExtintion = $requestFile->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExtintion ,PATHINFO_FILENAME);
 
+        $extintion = $requestFile->getClientOriginalExtension();
+        $fileNameToStore = $fileName.'_'.time().'.'.$extintion;
+        $requestFile->storeAs($directory , $fileNameToStore);
+        $filePath = public_path('storage/'.$directory.'/'.$fileNameToStore);
         try {
          
             \Tinify\setKey(env("TINIFY_KEY"));
-            $source = \Tinify\fromFile($uploadedFile);
-          return   $source->toFile($uploadedFile);
+            $source = \Tinify\fromFile($filePath);
+            $source->toFile($filePath);
+            return $fileNameToStore;
         } catch(\Tinify\AccountException $e) {
             dd("The error message is: " . $e->getMessage());
             // Verify your API key and account limit.
