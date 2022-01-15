@@ -81,7 +81,7 @@ class ProductService
             foreach (request('image') as $img) {
                 //dd($img);
                 $product->images->create([
-                    'path' => FileOperations::StoreFileAs($this->imageDirectory, $img, str::random(8))
+                    'path' => FileOperations::TinifyImg($this->imageDirectory, $img)
                 ]);
             }
         }
