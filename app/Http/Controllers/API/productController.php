@@ -513,7 +513,9 @@ class productController extends Controller
         //         'image' => $request->file('image')
         //         ]);
         //  }
-        $directory = 'products';
+        // $directory = 'products';
+        $directory = 'test';
+
         $fileNameWithExtintion = $request->file('image')->getClientOriginalName();
         $fileName = pathinfo($fileNameWithExtintion ,PATHINFO_FILENAME);
 
