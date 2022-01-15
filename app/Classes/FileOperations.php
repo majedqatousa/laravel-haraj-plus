@@ -49,7 +49,7 @@ class FileOperations
             \Tinify\setKey(env("TINIFY_KEY"));
             $source = \Tinify\fromFile($filePath);
             $source->toFile($filePath);
-            return $fileNameToStore;
+            return $directory.'/'.$fileNameToStore;
         } catch(\Tinify\AccountException $e) {
             dd("The error message is: " . $e->getMessage());
             // Verify your API key and account limit.
