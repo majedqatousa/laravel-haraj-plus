@@ -56,7 +56,18 @@ class ProductService
         }
 
         //dd($request);
-        $requestData['main_image'] = FileOperations::StoreFileAs($this->imageDirectory, $request->main_image, str::random(8));
+       
+        // $requestData['main_image'] = FileOperations::StoreFileAs($this->imageDirectory, $request->main_image, str::random(8));
+        $fileNameWithExtintion = $request->file('main_image')->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExtintion ,PATHINFO_FILENAME);
+
+        $extintion = $request->file('main_image')->getClientOriginalExtension();
+        $fileNameToStore = $fileName.'_'.time().'.'.$extintion;
+        $request->file('main_image')->storeAs('products' , $fileNameToStore);
+        $filePath = public_path('storage/products/'.$fileNameToStore);
+
+        $requestData['main_image'] = FileOperations::TinifyImg($this->imageDirectory, $filePath);
+
         $requestData['user_id'] = auth()->id();
 
         //   dd($requestData);

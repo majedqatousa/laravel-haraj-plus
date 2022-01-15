@@ -530,6 +530,7 @@
                 },
                 error: function(data) {
                      $("#loader").hide(100);
+                     console.log("Error !! ");
                 }
                 });
     });
