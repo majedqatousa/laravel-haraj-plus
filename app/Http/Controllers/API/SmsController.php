@@ -111,7 +111,7 @@ class SmsController
     private static function sendSMSMessage($mobile_number, $message)
     {
         $USER_NAME = "966505754748";
-        $PASSWORD = "S!c7q6@xNjuC";
+        $PASSWORD = "^{^{e,uCk)d7K`r-";
         $SENDER = "Haraj_plus";
         $MESSAGE = $message;
         $NUMBER = "9665" . $mobile_number;
