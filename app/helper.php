@@ -196,7 +196,7 @@ function sendSMS($numbers, $msg, $timeSend=0, $dateSend=0, $deleteKey=0, $viewRe
 {
 
 		$client = new \GuzzleHttp\Client();
-		$url = "http://api.yamamah.com/SendSMSV2?Username=966505754748&Password=S!c7q6@xNjuC&Tagname=haraj-plus&RecepientNumber=$numbers&Message=$msg&SendDateTime=0&EnableDR=true&SentMessageID=true";
+		$url = "http://api.yamamah.com/SendSMSV2?Username=966505754748&Password=^{^{e,uCk)d7K`r-&Tagname=haraj-plus&RecepientNumber=$numbers&Message=$msg&SendDateTime=0&EnableDR=true&SentMessageID=true";
 
 		$request = $client->get($url ,[
 		'form_params' => [
