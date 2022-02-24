@@ -151,11 +151,12 @@ class UserApiAuthController extends AuthBaseController
             $user = User::find($request->user('user_api')->id);
 
             $user->name = $request->get('name');
-            if(isset($request->get("city_id"))){
+
+            if(!empty($request->get('city_id'))){
                 $user->city_id = $request->get('city_id');
 
             }
-            if(isset($request->get("address"))){
+            if(!empty($request->get('address'))){
                 $user->address = $request->get('address');
 
             }
