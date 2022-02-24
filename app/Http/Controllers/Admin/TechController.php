@@ -123,7 +123,7 @@ class TechController extends Controller
                 'message'=>$request['message']
                 ]);
                 $fcmNotification =  new UserFcmTokenController();
-                $user = User::findOrFail($tech->id);
+                $user = User::findOrFail($tech->user_id);
                 $notification_title = "رفض إعلان";
                 $notification_subTitle = "إعلان";
                 $notification_body = "يؤسفنا لا يمكن قبول إعلانك";
