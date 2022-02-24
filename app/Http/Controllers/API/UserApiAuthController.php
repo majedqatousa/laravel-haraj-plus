@@ -65,11 +65,11 @@ class UserApiAuthController extends AuthBaseController
          $user = User::where("phone", $request->get('phone'))->first();
          if($user){
                $user->is_active = 1 ; 
-               if($user->name == null){
-                    $user->memberCase = 'signup';
-               }else{
-                     $user->memberCase = 'login';
-               }
+            //    if($user->name == null){
+            //         $user->memberCase = 'signup';
+            //    }else{
+            //          $user->memberCase = 'login';
+            //    }
             //   $user->name = "name!" ; 
             //   $user->email = "email!" ; 
             //   $user->city_id = 1 ;
