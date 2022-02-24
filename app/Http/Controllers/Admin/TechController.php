@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Notification;
 use App\Notifications\adminMessageNotification;
 use App\Notifications\MailNotification;
+use App\Http\Controllers\API\UserFcmTokenController;
+use App\User;
 
 use App\Mail\ContactMail;
 
@@ -120,6 +122,15 @@ class TechController extends Controller
                 'subject'=>$tech->subject,
                 'message'=>$request['message']
                 ]);
+                $fcmNotification =  new UserFcmTokenController();
+                $user = User::findOrFail($tech->id);
+                $notification_title = "رفض إعلان";
+                $notification_subTitle = "إعلان";
+                $notification_body = "يؤسفنا لا يمكن قبول إعلانك";
+                $token = $user->fcm_token;
+                if(!is_null($token)){
+                    $fcmNotification->sendFCMNotification($token, $notification_title , $notification_body);
+               }
 
                 $details=[
                     'type'=>'admin-message', 
