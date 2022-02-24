@@ -161,7 +161,7 @@ class UserApiAuthController extends AuthBaseController
           
             
             if ($user->is_promoted == 1) {
-                $user->about = $request->get('about');
+                // $user->about = $request->get('about');
             }
             if ($request->hasFile('photo')) {
 
