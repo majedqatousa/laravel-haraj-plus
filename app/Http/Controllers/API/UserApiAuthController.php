@@ -143,18 +143,22 @@ class UserApiAuthController extends AuthBaseController
         $userId = $request->user('user_api')->id;
         $roles = [
             'name' => 'required|string|min:3',
-            'address' => 'required|string|min:3',
-            'city_id' => 'required'
-           
         ];
         $validator = Validator::make($request->all(), $roles);
 
         if (!$validator->fails()) {
 
             $user = User::find($request->user('user_api')->id);
+
             $user->name = $request->get('name');
-            $user->city_id = $request->get('city_id');
-            $user->address = $request->get('address');
+            if(isset($request->get("city_id"))){
+                $user->city_id = $request->get('city_id');
+
+            }
+            if(isset($request->get("address"))){
+                $user->address = $request->get('address');
+
+            }
             if(!empty($request->get('image'))){
                   $user->image = $request->get('image');
             }
