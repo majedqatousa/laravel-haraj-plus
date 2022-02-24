@@ -124,9 +124,9 @@ class TechController extends Controller
                 ]);
                 $fcmNotification =  new UserFcmTokenController();
                 $user = User::findOrFail($tech->user_id);
-                $notification_title = "رفض إعلان";
+                $notification_title = "الدعم الفني";
                 $notification_subTitle = "إعلان";
-                $notification_body = "يؤسفنا لا يمكن قبول إعلانك";
+                $notification_body = "تم الرد على المذكرة الخاصة بك";
                 $token = $user->fcm_token;
                 if(!is_null($token)){
                     $fcmNotification->sendFCMNotification($token, $notification_title , $notification_body);
