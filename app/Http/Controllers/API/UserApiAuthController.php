@@ -165,6 +165,10 @@ class UserApiAuthController extends AuthBaseController
                 $user->address = $request->get('address');
 
             }
+            if(!empty($request->get('email'))){
+                $user->email = $request->get('email');
+
+            }
             if(!empty($request->get('image'))){
                   $user->image = $request->get('image');
             }
