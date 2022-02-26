@@ -245,84 +245,88 @@ class HomeController extends Controller
         $toPrice = $request->get('toPrice');
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
-        // if($city_id){
-        //     $productCreated = Product::where('city_id', $city_id)->get();
-        // }else if($category_id){
-        //     $productCreated = Product::where('category_id', $category_id)->get();
-        // }else if($toPrice && $fromPrice){
-        //     $productCreated = Product::whereBetween('price', [$fromPrice, $toPrice])->get();
-        // }else if($fromDate && $toDate){
-        //     $productCreated = Product::whereBetween('created_at', [$fromDate, $toDate])->get();
-        // }
-        // else if ($city_id && $toPrice && $fromPrice){
-        //     $productCreated = Product::where('city_id', $city_id)->whereBetween('price', [$fromPrice, $toPrice])->get();
-        // }
-        if(is_null($fromDate)&& is_null($toDate) && !is_null($category_id)&&!is_null($city_id) &&!is_null($fromPrice)&&!is_null($toPrice) ){
-            $productCreated = Product::where('category_id', $category_id)
+
+     $productCreated = Product::where('category_id', $category_id)
             ->where('city_id', $city_id)
             ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-        //done
-        }else if (!is_null($fromDate) &&!is_null($toDate)  && !is_null($category_id)&& !is_null($city_id)&& is_null($fromPrice)&& is_null($toPrice)){
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
-             ->WhereBetween('created_at', [$fromDate, $toDate])
-            ->get();
-            //done
-        }else if (!is_null($fromDate)&&!is_null($toDate) && is_null($category_id)&& $city_id&&!is_null($fromPrice) &&!is_null($toPrice)){
-            $productCreated = Product::where('city_id', $city_id)
-             ->WhereBetween('created_at', [$fromDate, $toDate])
-             ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-            //done
-        }else if (!is_null($fromDate)&&!is_null( $toDate) &&!is_null($category_id) && is_null($city_id)&& !is_null($fromPrice)&&!is_null( $toPrice)){
-            $productCreated = Product::where('category_id', $category_id)
-             ->WhereBetween('created_at', [$fromDate, $toDate])
-             ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-            //done 
-        }else if (!is_null($fromDate) && !is_null($toDate)  &&is_null($category_id)&&!is_null($city_id) &&!is_null($fromPrice) && !is_null($toPrice) ){
-            $productCreated = Product::where('city_id', $city_id)
-             ->WhereBetween('created_at', [$fromDate, $toDate])
-             ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-            //done 
-        }else if (!is_null($fromDate)&&!is_null($toDate)  && is_null($category_id)&& is_null($city_id)&&!is_null($fromPrice)&&!is_null($toPrice) ){
-            $productCreated = Product::whereBetween('created_at', [$fromDate, $toDate])
-            ->whereBetween('price', [$fromPrice, $toPrice])
-           ->get();
-        }else if (is_null($fromDate)&& is_null($toDate) && $category_id&& $city_id&& is_null($fromPrice)&& is_null($toPrice)){
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
-            ->get();
-            //done
-        }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&& $city_id&& $fromPrice&& $toPrice){
-            $productCreated = Product::where('city_id', $city_id)
-            ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-        }else if (is_null($fromDate)&& is_null($toDate) &&!is_null($category_id) && is_null($city_id)&&!is_null($fromPrice) &&!is_null($toPrice) ){
-            $productCreated = Product::where('category_id', $category_id)
-            ->whereBetween('price', [$fromPrice, $toPrice])
-            ->get();
-        }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&& $city_id&& is_null($fromPrice)&&is_null($toPrice)){
-            $productCreated = Product::where('city_id', $city_id)->where("is_valid" , 1)
-          
-            ->get();
-        }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&&is_null( $city_id)&& !is_null($fromPrice)&&!is_null($toPrice)){
-            $productCreated = Product::whereBetween('price', [$fromPrice, $toPrice])->where("is_valid" , 1)
-          
-            ->get();
-        }else if (!is_null($fromDate)&& !is_null($toDate) && is_null($category_id)&&is_null( $city_id)&& is_null($fromPrice)&&is_null($toPrice)){
-            $productCreated = Product::whereBetween('created_at', [$fromDate, $toDate])->where("is_valid" , 1)
-          
-            ->get();
-        }else{
-            $productCreated = Product::where('category_id', $category_id)
-            ->where('city_id', $city_id)
             ->WhereBetween('created_at', [$fromDate, $toDate])
-            ->whereBetween('price', [$fromPrice, $toPrice])
-           ->get();
-        }
+            ->paginate(10);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $productCreated
+            ]);
+
+
+
+      
+        // if(is_null($fromDate)&& is_null($toDate) && !is_null($category_id)&&!is_null($city_id) &&!is_null($fromPrice)&&!is_null($toPrice) ){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->where('city_id', $city_id)
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        // //done
+        // }else if (!is_null($fromDate) &&!is_null($toDate)  && !is_null($category_id)&& !is_null($city_id)&& is_null($fromPrice)&& is_null($toPrice)){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->where('city_id', $city_id)
+        //      ->WhereBetween('created_at', [$fromDate, $toDate])
+        //     ->get();
+        //     //done
+        // }else if (!is_null($fromDate)&&!is_null($toDate) && is_null($category_id)&& $city_id&&!is_null($fromPrice) &&!is_null($toPrice)){
+        //     $productCreated = Product::where('city_id', $city_id)
+        //      ->WhereBetween('created_at', [$fromDate, $toDate])
+        //      ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        //     //done
+        // }else if (!is_null($fromDate)&&!is_null( $toDate) &&!is_null($category_id) && is_null($city_id)&& !is_null($fromPrice)&&!is_null( $toPrice)){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //      ->WhereBetween('created_at', [$fromDate, $toDate])
+        //      ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        //     //done 
+        // }else if (!is_null($fromDate) && !is_null($toDate)  &&is_null($category_id)&&!is_null($city_id) &&!is_null($fromPrice) && !is_null($toPrice) ){
+        //     $productCreated = Product::where('city_id', $city_id)
+        //      ->WhereBetween('created_at', [$fromDate, $toDate])
+        //      ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        //     //done 
+        // }else if (!is_null($fromDate)&&!is_null($toDate)  && is_null($category_id)&& is_null($city_id)&&!is_null($fromPrice)&&!is_null($toPrice) ){
+        //     $productCreated = Product::whereBetween('created_at', [$fromDate, $toDate])
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //    ->get();
+        // }else if (is_null($fromDate)&& is_null($toDate) && $category_id&& $city_id&& is_null($fromPrice)&& is_null($toPrice)){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->where('city_id', $city_id)
+        //     ->get();
+        //     //done
+        // }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&& $city_id&& $fromPrice&& $toPrice){
+        //     $productCreated = Product::where('city_id', $city_id)
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        // }else if (is_null($fromDate)&& is_null($toDate) &&!is_null($category_id) && is_null($city_id)&&!is_null($fromPrice) &&!is_null($toPrice) ){
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //     ->get();
+        // }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&& $city_id&& is_null($fromPrice)&&is_null($toPrice)){
+        //     $productCreated = Product::where('city_id', $city_id)->where("is_valid" , 1)
+          
+        //     ->get();
+        // }else if (is_null($fromDate)&& is_null($toDate) && is_null($category_id)&&is_null( $city_id)&& !is_null($fromPrice)&&!is_null($toPrice)){
+        //     $productCreated = Product::whereBetween('price', [$fromPrice, $toPrice])->where("is_valid" , 1)
+          
+        //     ->get();
+        // }else if (!is_null($fromDate)&& !is_null($toDate) && is_null($category_id)&&is_null( $city_id)&& is_null($fromPrice)&&is_null($toPrice)){
+        //     $productCreated = Product::whereBetween('created_at', [$fromDate, $toDate])->where("is_valid" , 1)
+          
+        //     ->get();
+        // }else{
+        //     $productCreated = Product::where('category_id', $category_id)
+        //     ->where('city_id', $city_id)
+        //     ->WhereBetween('created_at', [$fromDate, $toDate])
+        //     ->whereBetween('price', [$fromPrice, $toPrice])
+        //    ->get();
+        // }
         // else if(is_null($fromPrice) && is_null($toPrice)){
         //     $productCreated = Product::where('category_id', $category_id)
         //     ->where('city_id', $city_id)
@@ -386,9 +390,9 @@ class HomeController extends Controller
         //     'message' => 'Success',
         //     'data' => $productCreated, 'paginate' => $paginate
         // ]);
-        return response()->json(
-            $productCreated
-             );
+        // return response()->json(
+        //     $productCreated
+        //      );
 
     }
     public function searchProduct(Request $request, $key){
