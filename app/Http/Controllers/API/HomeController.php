@@ -283,6 +283,15 @@ class HomeController extends Controller
                     ->paginate(10);
 
                     $extra = "4 is statment "; 
+        } else if(!is_null($fromPrice) && !is_null($toPrice) && !is_null($category_id) && !is_null($city_id) && !is_null($fromDate) && !is_null($toDate)){
+            $productCreated = Product::where("is_valid" , 1)
+                    ->where('category_id', $category_id)
+                    ->where('city_id', $city_id)
+                    ->whereBetween('price', [$fromPrice, $toPrice])
+                    ->WhereBetween('created_at', [$fromDate, $toDate])
+                    ->paginate(10);
+
+                    $extra = "5 is statment "; 
         }
         else{
             $productCreated = Product::where("is_valid" , 1)
