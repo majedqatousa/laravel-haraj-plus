@@ -245,13 +245,22 @@ class HomeController extends Controller
         $toPrice = $request->get('toPrice');
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
-
-     $productCreated = Product::where("is_valid" , 1)
-    //  where('category_id', $category_id)
-            // ->where('city_id', $city_id)
-            // ->whereBetween('price', [$fromPrice, $toPrice])
-            // ->WhereBetween('created_at', [$fromDate, $toDate])
-            ->paginate(10);
+        if(empty($fromPrice) && empty($toPrice) && empty($category_id) && empty($city_id) && !empty($fromDate) && !empty($toDate)){
+            $productCreated = Product::where("is_valid" , 1)
+                    // ->where('category_id', $category_id)
+                    // ->where('city_id', $city_id)
+                    // ->whereBetween('price', [$fromPrice, $toPrice])
+                    ->WhereBetween('created_at', [$fromDate, $toDate])
+                    ->paginate(10);
+        }else{
+            $productCreated = Product::where("is_valid" , 1)
+            //  where('category_id', $category_id)
+                    // ->where('city_id', $city_id)
+                    // ->whereBetween('price', [$fromPrice, $toPrice])
+                    // ->WhereBetween('created_at', [$fromDate, $toDate])
+                    ->paginate(10);
+        }
+    
 
             return response()->json([
                 'status' => true,
