@@ -269,6 +269,7 @@ class HomeController extends Controller
                 'status' => true,
                 'message' => 'Success',
                 'extra' => $extra,
+                'data 2 '=> $fromDate." - ". $toDate." - ". $fromPrice . "-". $toPrice,
                 'data' => $productCreated
             ]);
 
