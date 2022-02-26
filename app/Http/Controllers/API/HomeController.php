@@ -246,7 +246,7 @@ class HomeController extends Controller
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
         $extra = "else statment ";
-        if($fromPrice =="" && $toPrice =="" && is_null($category_id) && is_null($city_id) && $fromDate != "" && $toDate !=""){
+        if($fromPrice ==" " && $toPrice ==" " && is_null($category_id) && is_null($city_id) && $fromDate != "" && $toDate !=""){
             $productCreated = Product::where("is_valid" , 1)
                     // ->where('category_id', $category_id)
                     // ->where('city_id', $city_id)
