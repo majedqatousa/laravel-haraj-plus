@@ -245,6 +245,7 @@ class HomeController extends Controller
         $toPrice = $request->get('toPrice');
         $category_id = $request->get('category_id');
         $city_id = $request->get('city_id');
+        $fromPrice2 = $request->get('fPrice');
         $extra = "else statment ";
         if($fromPrice="null"&& $toPrice == "null"  && is_null($category_id) && is_null($city_id) && !is_null($fromDate) && !is_null($toDate)){
             $productCreated = Product::where("is_valid" , 1)
@@ -307,7 +308,7 @@ class HomeController extends Controller
                 'status' => true,
                 'message' => 'Success',
                 'extra' => $extra,
-                'data 2 '=> $fromDate."-". $toDate."-". $fromPrice . "-". $toPrice."-". $category_id . "-".$city_id ,
+                'data 2 '=> "fPrice ".$fromPrice2."0".$fromDate."-". $toDate."-". $fromPrice . "-". $toPrice."-". $category_id . "-".$city_id ,
                 'data' => $productCreated
             ]);
 
