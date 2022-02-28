@@ -23,16 +23,21 @@ class HomeController extends Controller
         $Slider = Slider::all();
 
         $businessProducts = Product::where('user_promoted', 1)->where('is_valid', 1)->orderBy('created_at', 'DESC')->limit(7)->get();
+
         $product = null;
         foreach ($businessProducts as $i => $products) {
-            $product[$i]['id']    = $products->id;
-            $product[$i]['name']    = $products->name;
-            $product[$i]['price']   = $products->price;
-            $product[$i]['description']   = $products->description;
-            $product[$i]['main_image']   = url('storage/' . $products->main_image);
-            $product[$i]['company_name']   = $products->company_name;
-            $product[$i]['is_favorite']   = $products->is_joined;
-            $product[$i]['user_id']   = $products->user_id;
+            $user = User::where("id", $products->user_id);
+                if($user->is_active){
+                    $product[$i]['id']    = $products->id;
+                    $product[$i]['name']    = $products->name;
+                    $product[$i]['price']   = $products->price;
+                    $product[$i]['description']   = $products->description;
+                    $product[$i]['main_image']   = url('storage/' . $products->main_image);
+                    $product[$i]['company_name']   = $products->company_name;
+                    $product[$i]['is_favorite']   = $products->is_joined;
+                    $product[$i]['user_id']   = $products->user_id;
+                }
+       
             
         }
 
