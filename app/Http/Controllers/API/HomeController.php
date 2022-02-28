@@ -247,19 +247,18 @@ class HomeController extends Controller
         $city_id = $request->get('city_id');
        
         $extra = "else statment ";
+        $productCreated = Product::where("is_valid" , 1);
+        if($city_id){
+            $productCreated = $productCreated->where('city_id', $city_id);
+        }
 
-
-            $productCreated = Product::where("is_valid" , 1)->when($city_id , function ($q) use($city_id){
+ $productCreated =  $productCreated->paginate(10);
+            // $productCreated = Product::where("is_valid" , 1)->when($city_id , function ($q) use($city_id){
                   
                        
-                $q->where('city_id', $city_id);
+            //     $q->where('city_id', $city_id);
                       
-                    })->when($category_id , function ($q) use($category_id){
-                  
-                       
-                        $q->where('category_id', $category_id);
-                              
-                            })->paginate(10);
+            //         })->paginate(10);
         // $productCreated = Product::where("is_valid" , 1)->where(function ($q) use($fromDate , $toDate){
         //     if($fromDate && $toDate){
                
