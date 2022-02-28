@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         $product = null;
         foreach ($businessProducts as $i => $products) {
-            $user = User::where("id", $products->user_id);
+            $user = User::where("id", $products->user_id)->first();
                 if($user->is_active){
                     $product[$i]['id']    = $products->id;
                     $product[$i]['name']    = $products->name;
