@@ -248,26 +248,31 @@ class HomeController extends Controller
        
         $extra = "else statment ";
 
-        $productCreated = Product::where("is_valid" , 1)->where(function ($q) use($fromDate , $toDate , $fromPrice , $toPrice ,$city_id , $category_id){
+        $productCreated = Product::where("is_valid" , 1)->where(function ($q) use($fromDate , $toDate){
             if($fromDate && $toDate){
                
                 $q ->WhereBetween('created_at', [$fromDate, $toDate]);
               
-            } 
-            if($fromPrice && $toPrice){
-                $q->whereBetween('price', [$fromPrice, $toPrice]);
-            }  
-            if($city_id){
-                $q->where('city_id', $city_id);
-                
-            }
-                if($category_id){
-                    $q->where('city_id', $category_id);
-                   
-                
             }
            
 
+        })->where(function ($q2) use($fromPrice , $toPrice){
+            if($fromPrice && $toPrice){
+                $q2->whereBetween('price', [$fromPrice, $toPrice]);
+               
+            }
+           
+
+        })->where(function ($q3) use($city_id){
+            if($city_id){
+                $q3->where('city_id', $city_id);
+                
+            }
+        })->where(function ($q4) use($category_id){
+            if($category_id){
+                $q4->where('city_id', $category_id);
+               
+            }
         })
         ->paginate(10);
         // if(isNull($fromPrice)  && isNull($toPrice) && isNull($category_id)  && isNull($city_id)&& !isNull($fromDate) && !isNull($toDate) ){
