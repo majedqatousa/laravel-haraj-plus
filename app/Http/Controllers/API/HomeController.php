@@ -252,7 +252,21 @@ class HomeController extends Controller
             if($fromDate && $toDate){
                 $q ->WhereBetween('created_at', [$fromDate, $toDate]);
             }
-        })->paginate(10);
+           
+        })->where(function ($q) use($fromPrice , $toPrice){
+            if($fromPrice && $toPrice){
+                $q->whereBetween('price', [$fromPrice, $toPrice]);
+            }
+        })->where(function ($q) use($city_id){
+            if($city_id){
+                $q->where('city_id', $city_id);
+            }
+        })->where(function ($q) use($category_id){
+            if($category_id){
+                $q->where('city_id', $category_id);
+            }
+        })
+        ->paginate(10);
         // if(isNull($fromPrice)  && isNull($toPrice) && isNull($category_id)  && isNull($city_id)&& !isNull($fromDate) && !isNull($toDate) ){
         //     $productCreated = Product::where("is_valid" , 1)
         //             // ->where('category_id', $category_id)
