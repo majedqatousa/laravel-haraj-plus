@@ -272,9 +272,9 @@ class productController extends Controller
         $user =     user::find($user_id);
         $city_name = City::find($product->city_id)->name;
 
-        if ($user->name == null) {
-            return ControllersService::generateProcessResponse(false, 'NOT_FOUND', 404);
-        }
+        // if ($user->name == null) {
+        //     return ControllersService::generateProcessResponse(false, 'NOT_FOUND', 404);
+        // }
         $resonseData['product_id']   = $product->id;
         $resonseData['product_name'] = $product->name;
         $resonseData['product_price'] = $product->price;
