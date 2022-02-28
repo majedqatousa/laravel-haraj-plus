@@ -291,7 +291,7 @@ class HomeController extends Controller
                
             }
         })
-        ->paginate(10);
+        ->get();
         // if(isNull($fromPrice)  && isNull($toPrice) && isNull($category_id)  && isNull($city_id)&& !isNull($fromDate) && !isNull($toDate) ){
         //     $productCreated = Product::where("is_valid" , 1)
         //             // ->where('category_id', $category_id)
