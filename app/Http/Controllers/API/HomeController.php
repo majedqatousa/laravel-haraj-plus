@@ -247,16 +247,22 @@ class HomeController extends Controller
         $city_id = $request->get('city_id');
        
         $extra = "else statment ";
-        if(isNull($fromPrice)  && isNull($toPrice) && isNull($category_id)  && isNull($city_id)&& !isNull($fromDate) && !isNull($toDate) ){
-            $productCreated = Product::where("is_valid" , 1)
-                    // ->where('category_id', $category_id)
-                    // ->where('city_id', $city_id)
-                    // ->whereBetween('price', [$fromPrice, $toPrice])
-                    ->WhereBetween('created_at', [$fromDate, $toDate])
-                    ->paginate(10);
 
-                    $extra = "1 is statment "; 
-        } 
+        $productCreated = Product::where("is_valid" , 1)->where(function ($q) use($fromDate , $toDate){
+            if($fromDate && $toDate){
+                $q ->WhereBetween('created_at', [$fromDate, $toDate]);
+            }
+        })->paginate(10);
+        // if(isNull($fromPrice)  && isNull($toPrice) && isNull($category_id)  && isNull($city_id)&& !isNull($fromDate) && !isNull($toDate) ){
+        //     $productCreated = Product::where("is_valid" , 1)
+        //             // ->where('category_id', $category_id)
+        //             // ->where('city_id', $city_id)
+        //             // ->whereBetween('price', [$fromPrice, $toPrice])
+        //             ->WhereBetween('created_at', [$fromDate, $toDate])
+        //             ->paginate(10);
+
+        //             $extra = "1 is statment "; 
+        // } 
         // else if($fromPrice != null && $toPrice != null && is_null($category_id) && is_null($city_id) && empty($fromDate) && empty($toDate)){
         //     $productCreated = Product::where("is_valid" , 1)
         //             // ->where('category_id', $category_id)
@@ -296,14 +302,14 @@ class HomeController extends Controller
 
         //             $extra = "5 is statment "; 
         // }
-        else{
-            $productCreated = Product::where("is_valid" , 1)
-            //  where('category_id', $category_id)
-                    // ->where('city_id', $city_id)
-                    // ->whereBetween('price', [$fromPrice, $toPrice])
-                    // ->WhereBetween('created_at', [$fromDate, $toDate])
-                    ->paginate(10);
-        }
+        // else{
+        //     $productCreated = Product::where("is_valid" , 1)
+        //     //  where('category_id', $category_id)
+        //             // ->where('city_id', $city_id)
+        //             // ->whereBetween('price', [$fromPrice, $toPrice])
+        //             // ->WhereBetween('created_at', [$fromDate, $toDate])
+        //             ->paginate(10);
+        // }
     
 
             return response()->json([
