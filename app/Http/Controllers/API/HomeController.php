@@ -254,7 +254,12 @@ class HomeController extends Controller
                        
                 $q->where('city_id', $city_id);
                       
-                    })->paginate(10);
+                    })->when($category_id , function ($q) use($category_id){
+                  
+                       
+                        $q->where('category_id', $category_id);
+                              
+                            })->paginate(10);
         // $productCreated = Product::where("is_valid" , 1)->where(function ($q) use($fromDate , $toDate){
         //     if($fromDate && $toDate){
                
