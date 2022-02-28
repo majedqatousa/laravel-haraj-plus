@@ -253,16 +253,18 @@ class HomeController extends Controller
                
                 $q ->WhereBetween('created_at', [$fromDate, $toDate]);
               
-            }else if($fromPrice && $toPrice){
+            } 
+            if($fromPrice && $toPrice){
                 $q->whereBetween('price', [$fromPrice, $toPrice]);
-            }else  if($city_id){
+            }  
+            if($city_id){
                 $q->where('city_id', $city_id);
                 
-            }else{
+            }
                 if($category_id){
                     $q->where('city_id', $category_id);
                    
-                }
+                
             }
            
 
