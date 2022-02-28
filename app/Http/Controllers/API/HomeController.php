@@ -256,7 +256,7 @@ class HomeController extends Controller
                     ->paginate(10);
 
                     $extra = "1 is statment "; 
-        } else if(!empty($fromPrice) && !empty($toPrice) && is_null($category_id) && is_null($city_id) && empty($fromDate) && empty($toDate)){
+        } else if($fromPrice != null && $toPrice != null && is_null($category_id) && is_null($city_id) && empty($fromDate) && empty($toDate)){
             $productCreated = Product::where("is_valid" , 1)
                     // ->where('category_id', $category_id)
                     // ->where('city_id', $city_id)
