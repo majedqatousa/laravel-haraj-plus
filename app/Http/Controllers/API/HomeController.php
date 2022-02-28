@@ -254,9 +254,9 @@ class HomeController extends Controller
         if($category_id){
             $productCreated = $productCreated->where('category_id', $category_id);
         }
-        if($fromPrice && $toPrice){
+        // if($fromPrice && $toPrice){
             $productCreated = $productCreated->whereBetween('price', [$fromPrice, $toPrice]);
-        }
+        // }
 
  $productCreated =  $productCreated->get();
         //     $productCreated = Product::where("is_valid" , 1)->when($city_id , function ($q) use($city_id){
