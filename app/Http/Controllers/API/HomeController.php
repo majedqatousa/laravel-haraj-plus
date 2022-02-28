@@ -26,8 +26,6 @@ class HomeController extends Controller
 
         $product = null;
         foreach ($businessProducts as $i => $products) {
-            $user = User::where("id", $products->user_id)->first();
-              
                     $product[$i]['id']    = $products->id;
                     $product[$i]['name']    = $products->name;
                     $product[$i]['price']   = $products->price;
@@ -35,11 +33,7 @@ class HomeController extends Controller
                     $product[$i]['main_image']   = url('storage/' . $products->main_image);
                     $product[$i]['company_name']   = $products->company_name;
                     $product[$i]['is_favorite']   = $products->is_joined;
-                    $product[$i]['user_id']   = $products->user_id;
-                    $product[$i]['user_active']   = $user->is_avtice;
-                    
-       
-            
+                    $product[$i]['user_id']   = $products->user_id;  
         }
 
         $businessProducts = $product;

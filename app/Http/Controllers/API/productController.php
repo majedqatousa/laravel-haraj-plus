@@ -619,9 +619,9 @@ class productController extends Controller
         $user_id = $product->user_id;
         $user =     user::find($user_id);
 
-        if ($user->name == null) {
-            return ControllersService::generateProcessResponse(false, 'NOT_FOUND', 404);
-        }
+        // if ($user->name == null) {
+        //     return ControllersService::generateProcessResponse(false, 'NOT_FOUND', 404);
+        // }
         $resonseData['product_id']   = $product->id;
         $resonseData['product_name'] = $product->name;
         $resonseData['product_price'] = $product->price;
