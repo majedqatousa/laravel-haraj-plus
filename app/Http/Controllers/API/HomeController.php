@@ -354,6 +354,7 @@ class HomeController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
+                "count"=>$productCreated->count(),
                 'extra' => $extra,
                 'data 2 '=> $fromDate."-". $toDate."-". $fromPrice . "-". $toPrice."-". $category_id . "-".$city_id ,
                 'data' => $productCreated
