@@ -26,15 +26,18 @@ class HomeController extends Controller
 
         $product = null;
         foreach ($businessProducts as $i => $products) {
-                    $product[$i]['id']    = $products->id;
-                    $product[$i]['name']    = $products->name;
-                    $product[$i]['price']   = $products->price;
-                    $product[$i]['description']   = $products->description;
-                    $product[$i]['main_image']   = url('storage/' . $products->main_image);
-                    $product[$i]['company_name']   = $products->company_name;
-                    $product[$i]['is_favorite']   = $products->is_joined;
-                    $product[$i]['user_id']   = $products->user_id;  
-                    $product[$i]['is_active'] = $products->is_active;
+            if($products->is_active == 1){
+                $product[$i]['id']    = $products->id;
+                $product[$i]['name']    = $products->name;
+                $product[$i]['price']   = $products->price;
+                $product[$i]['description']   = $products->description;
+                $product[$i]['main_image']   = url('storage/' . $products->main_image);
+                $product[$i]['company_name']   = $products->company_name;
+                $product[$i]['is_favorite']   = $products->is_joined;
+                $product[$i]['user_id']   = $products->user_id;  
+                $product[$i]['is_active'] = $products->is_active;
+            }
+                  
                     
         }
 
