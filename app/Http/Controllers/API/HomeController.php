@@ -34,6 +34,8 @@ class HomeController extends Controller
                     $product[$i]['company_name']   = $products->company_name;
                     $product[$i]['is_favorite']   = $products->is_joined;
                     $product[$i]['user_id']   = $products->user_id;  
+                    $product[$i]['is_active'] = $products->is_active;
+                    
         }
 
         $businessProducts = $product;
@@ -49,6 +51,8 @@ class HomeController extends Controller
             $products[$i]['company_name']   = $product->company_name;
             $products[$i]['is_favorite']   = $product->is_joined;
             $products[$i]['user_id']   = $product->user_id;
+            $products[$i]['is_active']   = $product->is_active;  
+
         }
 
         $userProduct = $products;
