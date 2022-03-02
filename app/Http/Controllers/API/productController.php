@@ -298,6 +298,8 @@ class productController extends Controller
         }
         
             $resonseData['company_name'] = $product->company_name;
+            $resonseData['is_active'] = $product->is_active;
+            
         
         $resonseData['is_favorite']   = $product->is_joined;
 

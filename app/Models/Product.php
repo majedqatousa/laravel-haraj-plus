@@ -131,6 +131,12 @@ class Product extends Model
         else
             return null;
     }
+    public function getIsActiveAttribute(){
+        if(!empty($this->user->is_active))
+            return $this->user->is_active;
+        else
+            return null;
+    }
 
     public function getPhoneAttribute()
     {
