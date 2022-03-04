@@ -22,7 +22,11 @@ class HomeController extends Controller
         $category = Category::where('parent_id', Null)->orderBy('order', 'asc')->limit(15)->get();
         $Slider = Slider::all();
 
-        $businessProducts = Product::where('user_promoted', 1)->where('is_valid', 1)->orderBy('created_at', 'DESC')->limit(7)->get();
+        $businessProducts = Product::where('user_promoted', 1)->where('is_valid', 1)->wherehas('user', function ($q) {
+
+            $q->where('is_promoted', 1)->where('is_active', 1);
+
+        })->orderBy('created_at', 'DESC')->limit(7)->get();
 
         $product = null;
         foreach ($businessProducts as $i => $products) {
