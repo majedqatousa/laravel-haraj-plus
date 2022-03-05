@@ -39,7 +39,11 @@ class CategoryController extends Controller
     }
     public function productCategory(Request $request)
     {
-        $userProduct = Product::where('user_promoted', 1)->where('is_valid', 1)->where('category_id', $request->get('category_id'))->get();
+        $userProduct = Product::where('user_promoted', 1)->where('is_valid', 1)->wherehas('user', function ($q) {
+
+            $q->where('is_active', 1);
+
+        })->where('category_id', $request->get('category_id'))->get();
         $products = [];
         foreach ($userProduct as $i => $product) {
             $products[$i]['id']    = $product->id;

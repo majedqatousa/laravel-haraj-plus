@@ -24,7 +24,7 @@ class HomeController extends Controller
 
         $businessProducts = Product::where('user_promoted', 1)->where('is_valid', 1)->wherehas('user', function ($q) {
 
-            $q->where('is_promoted', 1)->where('is_active', 1);
+            $q->where('is_active', 1);
 
         })->orderBy('created_at', 'DESC')->limit(7)->get();
 
@@ -128,7 +128,7 @@ class HomeController extends Controller
         $businessProducts = Product::where('user_promoted', 1)
             ->where('is_valid', 1)->wherehas('user', function ($q) {
 
-                $q->where('is_promoted', 1)->where('is_active', 1);
+                $q->where('is_active', 1);
     
             })
             ->orderBy('created_at', 'DESC')
