@@ -282,7 +282,11 @@ class HomeController extends Controller
             }
         }
 
- $productCreated =  $productCreated->paginate(10);
+ $productCreated =  $productCreated->wherehas('user', function ($q) {
+
+    $q->where('is_active', 1);
+
+})->paginate(10);
         //     $productCreated = Product::where("is_valid" , 1)->when($city_id , function ($q) use($city_id){
                   
                        
