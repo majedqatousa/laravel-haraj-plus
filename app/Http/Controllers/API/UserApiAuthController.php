@@ -31,16 +31,32 @@ class UserApiAuthController extends AuthBaseController
         if (!$validator->fails()) {
             $user = User::where("phone", $request->get('phone'))->first();
             if ($user) {
+
                 $user = user::find($user->id);
-              //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
-                $isSaved = $user->save();
-                if ($isSaved) {
-                    // return ControllersService::generateObjectSuccessResponseSMS($user->code, Messages::getMessage('AUTH_CODE_SENT'), $request->get('phone'));
-                    // return $this->generateToken($user, 'LOGGED_IN_SUCCESSFULLY');
-                     return response()->json(array(
-            'status' => true), 200 );
-                    
+                if($user->is_active == 0){
+                    return response()->json(array(
+                        'status' => false), 200 );
+                                
+                            }
                 }
+                }else{
+                    $isSaved = $user->save();
+                    if($isSaved){
+                        return response()->json(array(
+                            'status' => true), 200 );
+                                    
+                                }
+                    }
+                }
+              //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
+              
+            //     if ($isSaved) {
+            //         // return ControllersService::generateObjectSuccessResponseSMS($user->code, Messages::getMessage('AUTH_CODE_SENT'), $request->get('phone'));
+            //         // return $this->generateToken($user, 'LOGGED_IN_SUCCESSFULLY');
+            //          return response()->json(array(
+            // 'status' => true), 200 );
+                    
+            //     }
             } elseif (!$user) {
                 $user = new User();
                 $user->phone = $request->get('phone');
