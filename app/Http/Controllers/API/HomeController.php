@@ -126,7 +126,11 @@ class HomeController extends Controller
     public function productUserPromit()
     {
         $businessProducts = Product::where('user_promoted', 1)
-            ->where('is_valid', 1)
+            ->where('is_valid', 1)->wherehas('user', function ($q) {
+
+                $q->where('is_promoted', 1)->where('is_active', 1);
+    
+            })
             ->orderBy('created_at', 'DESC')
             ->select('id', 'name', 'price', 'description', 'main_image', 'user_id')
             ->paginate(10);
