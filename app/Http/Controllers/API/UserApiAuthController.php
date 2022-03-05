@@ -37,14 +37,12 @@ class UserApiAuthController extends AuthBaseController
                     return response()->json(array(
                         'status' => false), 200 );
       
-                }
-                else{
-                    $isSaved = $user->save();
-                    if($isSaved){
+                }else{
+                
                         return response()->json(array(
                             'status' => true), 200 );
                                     
-                                }
+                      
                     
                 }
               //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
