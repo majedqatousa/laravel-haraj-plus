@@ -34,8 +34,8 @@ class UserApiAuthController extends AuthBaseController
 
                 $user = user::find($user->id);
                 if($user->is_active == 0){
-                    return response()->json(array(
-                        'status' => false), 510 );
+                    return ControllersService::generateValidationErrorMessage("هذا المستخدم محظور");
+
       
                 }
                 else{
