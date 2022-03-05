@@ -36,17 +36,16 @@ class UserApiAuthController extends AuthBaseController
                 if($user->is_active == 0){
                     return response()->json(array(
                         'status' => false), 200 );
-                                
-                            }
+      
                 }
-                }else{
+                else{
                     $isSaved = $user->save();
                     if($isSaved){
                         return response()->json(array(
                             'status' => true), 200 );
                                     
                                 }
-                    }
+                    
                 }
               //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
               
@@ -57,7 +56,7 @@ class UserApiAuthController extends AuthBaseController
             // 'status' => true), 200 );
                     
             //     }
-            } elseif (!$user) {
+            } else if (!$user) {
                 $user = new User();
                 $user->phone = $request->get('phone');
              //   $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
