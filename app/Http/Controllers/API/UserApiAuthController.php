@@ -35,14 +35,16 @@ class UserApiAuthController extends AuthBaseController
                 $user = user::find($user->id);
                 if($user->is_active == 0){
                     return response()->json(array(
-                        'status' => false), 200 );
+                        'status' => false), 210 );
       
-                }else{
-                
+                }
+                else{
+                    $isSaved = $user->save();
+                    if($isSaved){
                         return response()->json(array(
-                            'status' => true), 200 );
+                            'status' => true), 220 );
                                     
-                      
+                                }
                     
                 }
               //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
@@ -64,8 +66,8 @@ class UserApiAuthController extends AuthBaseController
                     // return ControllersService::generateObjectSuccessResponseSMS($user->code, Messages::getMessage('AUTH_CODE_SENT'), $request->get('phone'));
                   //   return $this->generateToken($user, 'LOGGED_IN_SUCCESSFULLY');
                      return response()->json(array(
-            'status' => true), 200 );
-                }
+                        'status' => true), 200 );
+                    }
             }
         } else {
             return ControllersService::generateValidationErrorMessage($validator->getMessageBag()->first());
