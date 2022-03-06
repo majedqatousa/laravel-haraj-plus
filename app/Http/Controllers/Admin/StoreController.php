@@ -57,7 +57,7 @@ class StoreController extends Controller
        }
 
         \Notification::send($user, new orderActionNotification($details));
-        \Notification::send($user,new MailNotification(['line'=> $details['message'] ,'url'=>$details['actionUrl'],'url_text'=>'مشاهدة المنتج']));
+        \Notification::send($user,new MailNotification(['line'=> $details['message'] ));
 
         session()->flash('success', 'تم التفعيل بنجاح');
         return redirect()->back();
