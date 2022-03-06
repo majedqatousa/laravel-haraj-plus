@@ -205,6 +205,8 @@ Route::get('/products/show/{id}', 'Website\WebsiteController@categoryProducts')-
 
 Route::post('login-user', 'Auth\LoginController@loginUser')->name('user.login');
 
+Route::get('user-phoneAuth', 'Auth\PhoneAuthController@index')->name('user.phoneAuth');
+
 //Website Subscribers
 Route::post('subscriber', 'Website\SubscriberController@create')->name('subscriber.store');
 

@@ -161,10 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <!-- social regiseration -->
                                     <div class="form-group social-register">
                                         <p>أو يمكنك التسجيل من خلال</p>
-                                
-                                         <div id="firebaseui-auth-container"></div>
-                                        <div id="loader2">Loading...</div>
-     
+                                        <button id="phoneAuth" class="custom-btn" data-href="{{route('user.phoneAuth')}}">رقم الهاتف</button>
                                     </div>
                                 </form>
                             </div>
@@ -420,6 +417,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 @yield('scripts')
 <script>
+$("#phoneAuth").click(function(){
+    window.location.href = $(this).data('href');
+});
 
 $("#close-form").click(function(){
     window.location.reload();

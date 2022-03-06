@@ -8,6 +8,8 @@ use App\Models\PromotedUser;
 use App\User;
 use App\Http\Controllers\API\UserNotificationController;
 use App\Http\Controllers\API\UserFcmTokenController;
+use App\Notifications\orderActionNotification;
+use App\Notifications\MailNotification;
 
 class StoreController extends Controller
 {
