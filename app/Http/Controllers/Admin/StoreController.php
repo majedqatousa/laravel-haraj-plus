@@ -57,7 +57,7 @@ class StoreController extends Controller
        }
 
         \Notification::send($user, new orderActionNotification($details));
-        \Notification::send($user,new MailNotification(['line'=> $details['message'] ));
+        \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>'https://haraj-plus.co','url_text'=>' الذهاب للموقع']));
 
         session()->flash('success', 'تم التفعيل بنجاح');
         return redirect()->back();
