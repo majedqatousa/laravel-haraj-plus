@@ -71,6 +71,8 @@
     @endsection
 
 @section('content')
+
+
     <!--start profile-pg
           ================-->
     <section class="order-div page-order-div">
@@ -80,6 +82,19 @@
                     <!--start profile-images-->
                     <div class="profile-images-grid col-12 no-marg-row wow fadeIn">
                         <div class="form-group profile-image-upload">
+                        @if($user->is_active==0)
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12  text-center wow fadeIn p-3">
+          
+            المتجر الخاص بك قيد المراجعة، أدخل بيانات المتجر بالشكل الصحيح لحين قبوله  
+
+          
+        </div>
+    </div>
+</div>
+@else
+@endif
                             <form  name="form1"  id="file" method="post" enctype="multipart/form-data">
                                 @csrf
 
@@ -260,7 +275,6 @@
 
     </section>
     <!--end profile-pg-->
-
 
     @endsection
 @section('scripts')

@@ -32,7 +32,7 @@ class StoreController extends Controller
                     $promotedUser->save();
                 }
         }else{
-            PromotedUser::create(['user_id'=>$user,'pakage_id'=>2,'start_date'=>\Carbon\Carbon::now()->format('Y-m-d'),'link'=>Str::random(6),'end_date'=>\Carbon\Carbon::now()->addDays(360)->format('y-m-d')]);
+            PromotedUser::create(['user_id'=>$user,'pakage_id'=>2,'is_active'=>0,'start_date'=>\Carbon\Carbon::now()->format('Y-m-d'),'link'=>Str::random(6),'end_date'=>\Carbon\Carbon::now()->addDays(360)->format('y-m-d')]);
             $promotedUser = User::where("id", $user)->first();
             if($promotedUser){
                 $promotedUser->is_promoted = 1;

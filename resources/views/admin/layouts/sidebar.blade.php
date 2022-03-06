@@ -33,6 +33,12 @@
                             class="fa fa-car"></i><span>المنتجات قيد المراجعة</span></a>
                 </li>
 
+                <li @if(\Request::segment(2)=='stores')  class="active" @endif">
+
+                        <a  href="{{route('stores')}}" title="المنتجات"><i
+                                class="fa fa-store"></i><span>المتاجر قيد المراجعة</span></a>
+                </li>
+
 
 
               <li @if(\Request::segment(2)=='payments')  class="active" @endif>

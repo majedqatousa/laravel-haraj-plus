@@ -168,7 +168,7 @@ class ProductController extends Controller
             $fcmNotification->sendFCMNotification($token, $notification_title , $notification_body);
        }
         \Notification::send($user, new orderActionNotification($details));
-        \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>'https://staging.haraj-plus.co','url_text'=>' الذهاب للموقع']));
+        \Notification::send($user,new MailNotification(['line'=> $details['message'],'url'=>'https://haraj-plus.co','url_text'=>' الذهاب للموقع']));
 
 
         $this->service->deleteProduct($id);
