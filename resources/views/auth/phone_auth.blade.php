@@ -76,11 +76,7 @@
  // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-
-  console.log("Firebase started.");
-
-  // Facebook
-  
+  $(document).ready(function(){
 
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
@@ -93,6 +89,8 @@
             // ...
         }
     });
+
+
     $(".sendOTP").click(function() {
         console.log("Firebase started.");
 
@@ -122,24 +120,32 @@
             });
 
 
-    })
-
-    // now verify otp
+    });
     $("#verifyOTP").click(function() {
      
-        const code = $("[name=verify_otp]").val();
-        confirmationResult.confirm(code).then((result) => {
-            // User signed in successfully.
-            const user = result.user;
-            alert("Verified successfully");
-            // ...
-        }).catch((error) => {
-            // User couldn't sign in (bad verification code?)
-            // ...
-            console.log(error.message)
-        });
+     const code = $("[name=verify_otp]").val();
+     confirmationResult.confirm(code).then((result) => {
+         // User signed in successfully.
+         const user = result.user;
+         alert("Verified successfully");
+         // ...
+     }).catch((error) => {
+         // User couldn't sign in (bad verification code?)
+         // ...
+         console.log(error.message)
+     });
 
 
-    })
+ })
+  });
+  console.log("Firebase started.");
+
+  // Facebook
+  
+
+   
+
+    // now verify otp
+  
 </script>
 @endsection
