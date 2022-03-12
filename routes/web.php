@@ -40,6 +40,8 @@ Route::get('report-comment/{comment}/{product}','Website\WebsiteController@repor
 Route::post("password2/update",'Auth\ForgotPasswordController@updatePassword')->name('password.update1');
 Route::get('search-result','Website\HomeController@getSearchResult')->name('search.result');
 Route::post('verify','Website\WebsiteController@verify')->name('verify');
+Route::get('verify2','Website\WebsiteController@verify2')->name('verify2');
+
 Route::get('resend','Auth\RegisterController@resend')->name('resend');
 Route::get('user_sms','Auth\RegisterController@user_sms')->name('user_sms');
 Route::get('haraj-specials','Website\WebsiteController@haraj_specials')->name('haraj-specials');

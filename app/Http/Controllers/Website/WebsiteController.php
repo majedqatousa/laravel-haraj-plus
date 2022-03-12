@@ -395,6 +395,25 @@ class WebsiteController extends Controller
             return redirect()->route('signUp');
         }
     }
+    public function verify2(Request $request){
+      
+
+       $user = User::where('phone',$request->phone)->first();
+       if(isset($user)){
+           $user->is_connected = 1 ; 
+           $user->save();
+        Auth::login(User::where('phone', $request->phone)->first());
+        session()->flash('success', 'تم التفعيل بنجاح');
+        // return redirect()->to('/');
+       }else{
+        error_log('Some message here.3');
+
+        session()->flash('success', ' 2 تم التفعيل بنجاح');
+       }
+    //    return redirect()->to('/');
+
+    }
+    
 
         public function verifyNumber($token ,$id)
         {

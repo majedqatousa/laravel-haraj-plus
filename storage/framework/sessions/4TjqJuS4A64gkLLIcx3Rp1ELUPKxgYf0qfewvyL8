@@ -1,1 +1,1 @@
-a:3:{s:6:"_token";s:40:"8HERqrajE2RS7u3UUZ7wYngFDrkkU6SWSI280yl3";s:9:"_previous";a:1:{s:3:"url";s:36:"http://127.0.0.1:8000/user-phoneAuth";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}}
+a:3:{s:6:"_token";s:40:"y05NKiggWzCKxtJ7TWfGeYiC4WFHn9h5nk3faNZ3";s:9:"_previous";a:1:{s:3:"url";s:72:"http://127.0.0.1:8000/user-phoneAuth?phone_number=0598353023&verify_otp=";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}}
