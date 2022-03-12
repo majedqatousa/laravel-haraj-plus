@@ -118,7 +118,7 @@
                 alert("Please enter valid phone number");
                 return
             }
-            phoneNumber = '+966'+phoneNumber;
+           
 
             const appVerifier = window.recaptchaVerifier;
             firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
