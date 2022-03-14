@@ -367,6 +367,7 @@ class WebsiteController extends Controller
         $user = User::where('phone', $phone)->first();
         if (isset($user)) {
             $user->connected = 1;
+            $user->is_active =1;
             $user->save();
             Auth::login(User::where('phone', $phone)->first());
             session()->flash('success', 'تم تسجيل الدخول بنجاح');
