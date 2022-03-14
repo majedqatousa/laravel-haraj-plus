@@ -196,7 +196,7 @@
                     if(data['success'] ==1){
                         setTimeout(function(){ 
                             // window.location.reload();
-                            window.location.href = "/";
+                            window.location.href = "tech";
                         });
                     }else{
                         console.log("no user for this phone number ");
