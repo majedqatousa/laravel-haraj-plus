@@ -159,11 +159,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     </div>
 
                                     <!-- social regiseration -->
-                                    <div class="form-group social-register">
+                                  
+                                </form>
+                                <div class="form-group social-register">
                                         <p>أو يمكنك التسجيل من خلال</p>
                                         <button id="phoneAuth" class="custom-btn" data-href="{{route('user.phoneAuth')}}">رقم الهاتف</button>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>

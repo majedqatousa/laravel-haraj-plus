@@ -86,7 +86,7 @@
 
 
                     <br><br>
-                    <h4 class="ch-ver">إنتظر قليلاً لوصول كود التحقق</h4>
+                    <!-- <h4 class="ch-ver">إنتظر قليلاً لوصول كود التحقق</h4> -->
 
 
                 </div>
@@ -138,7 +138,7 @@
                 alert("الرجاء إدخال رقم هاتف صحيح");
                 return
             }
-            if (phoneNumber.length !== 9) {
+            if (phoneNumber.length !== 10) {
                 alert("يجب ان يتكون رقم الهاتف من 10 خانات");
                 return
             }
@@ -196,7 +196,7 @@
                     if(data['success'] ==1){
                         setTimeout(function(){ 
                             window.location.reload();
-                            window.location.href = "/";
+                            // window.location.href = "/";
                         });
                     }else{
                         console.log("no user for this phone number ");
@@ -218,7 +218,7 @@
                 // User couldn't sign in (bad verification code?)
                 // ...
                 console.log("Erorr v nott valid")
-
+                alert("رمز التفعيل خاطئ");
                 console.log(error.message)
             });
 

@@ -369,6 +369,7 @@ class WebsiteController extends Controller
             $user->connected = 1;
             $user->save();
             Auth::login(User::where('phone', $phone)->first());
+            session()->flash('success', 'تم تسجيل الدخول بنجاح');
 
             return response()->json(['success' => 1, 'phone' => $phone, 'userid' => $user->id]);
         } else {
