@@ -74,12 +74,20 @@ class RegisterController extends Controller
    public function register(UserRequest $request){
 
       $user= $this->service->storeUser($request);
-  
-        $token=$user->code;
-        $id=$user->id;
-       if(session('failed')!=null)
-           return back();
-       return view('auth.verify',compact('token','id'));
+        if(isset($user)){
+            $token=$user->code;
+            $id=$user->id;
+            $phone = $user->phone;
+           if(session('failed')!=null)
+               return back();
+           return view('auth.verify',compact('token','id', 'phone'));
+        }else{
+
+            session()->flash('success', '   رقم الهتاتف مستخدم بالفعل    ');
+            return back();
+           
+        }
+      
    
 
    }

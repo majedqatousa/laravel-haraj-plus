@@ -39,7 +39,7 @@ Route::get('/reset-form','Auth\ForgotPasswordController@showResetForm')->name("r
 Route::get('report-comment/{comment}/{product}','Website\WebsiteController@reportComment')->name('reportComment');
 Route::post("password2/update",'Auth\ForgotPasswordController@updatePassword')->name('password.update1');
 Route::get('search-result','Website\HomeController@getSearchResult')->name('search.result');
-Route::post('verify','Website\WebsiteController@verify')->name('verify');
+Route::get('verify','Website\WebsiteController@verify')->name('verify');
 Route::get('verify2','Website\WebsiteController@verify2')->name('verify2');
 
 Route::get('resend','Auth\RegisterController@resend')->name('resend');

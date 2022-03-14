@@ -577,7 +577,8 @@ function sleep(ms) {
                     $('#error').hide();
                       $('#success').append(data['msg']);
                       $('#success').show();
-                    setTimeout(function(){ $('#loginForm').modal('hide');
+                    setTimeout(function(){ 
+                        $('#loginForm').modal('hide');
                         window.location.reload();
                     }, 500);
 

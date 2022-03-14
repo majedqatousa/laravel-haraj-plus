@@ -22,17 +22,24 @@ class UserService {
     public function storeUser(Request $request){
 //        dd($request->all());
         $requestData = $request->all();
-        $code = rand ( 1000 , 9999 );
-        $requestData['code'] = $code;
-        $requestData['password'] = bcrypt($request->password);
-        if($request->hasFile('image')){
-            $pathAfterUpload = FileOperations::StoreFileAs($this->imageDirectory, $request->image, str::random(8));
-            $requestData['image'] = $pathAfterUpload;
+        $user = User::where('phone',format_number($requestData['phone']))->count();
+        if($user >0){
+            return null;
+        }else{
+            $code = rand ( 1000 , 9999 );
+            $requestData['code'] = $code;
+            $requestData['password'] = bcrypt($request->password);
+            if($request->hasFile('image')){
+                $pathAfterUpload = FileOperations::StoreFileAs($this->imageDirectory, $request->image, str::random(8));
+                $requestData['image'] = $pathAfterUpload;
+            }
+            $requestData['phone']=format_number($requestData['phone']);
+            $userInfo= $this->repo->store($requestData);
+            // $message = "كود التفعيل الخاص بك فى موقع حراج بلص هو".$code;
+            return $userInfo;
         }
-        $requestData['phone']=format_number($requestData['phone']);
-        $user= $this->repo->store($requestData);
-        $message = "كود التفعيل الخاص بك فى موقع حراج بلص هو".$code;
-        sendSMS($user->phone, $message);
+      
+        // sendSMS($user->phone, $message);
 
 
 
@@ -54,7 +61,7 @@ class UserService {
         //    session()->flash('failed','رقم الهاتف غير صالح يرجى التاكد منه');
         // }
 
-        return $user;
+      
 
     }//end store user
 

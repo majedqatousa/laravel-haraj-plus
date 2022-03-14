@@ -176,12 +176,12 @@
                                     </div>
 
                                     <!-- social regiseration -->
-                                    <div class="form-group social-register">
+                                    <!-- <div class="form-group social-register">
                                         <p>أو يمكنك التسجيل من خلال</p>
                                         <div id="firebaseui-auth-container3"></div>
                                         <div id="loader3">Loading...</div>
      
-                                    </div>
+                                    </div> -->
                                 </form>
                             </div>
                         </div>
