@@ -33,12 +33,12 @@ class UserApiAuthController extends AuthBaseController
             if ($user) {
 
                 $user = user::find($user->id);
-                if($user->is_active == 0){
-                    return ControllersService::generateValidationErrorMessage("هذا المستخدم محظور");
+                // if($user->is_active == 0){
+                //     return ControllersService::generateValidationErrorMessage("هذا المستخدم محظور");
 
       
-                }
-                else{
+                // }
+                // else{
                     $isSaved = $user->save();
                     if($isSaved){
                         return response()->json(array(
@@ -46,7 +46,7 @@ class UserApiAuthController extends AuthBaseController
                                     
                                 }
                     
-                }
+                // }
               //  $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
               
             //     if ($isSaved) {
@@ -56,7 +56,7 @@ class UserApiAuthController extends AuthBaseController
             // 'status' => true), 200 );
                     
             //     }
-            } else if (!$user) {
+            } else if (!$user) {  
                 $user = new User();
                 $user->phone = $request->get('phone');
              //   $user->code = SmsController::sendSmsCodeMessage($request->get('phone'), 3);
