@@ -53,6 +53,8 @@ class CategoryController extends Controller
             $products[$i]['main_image']   = url('storage/' . $product->main_image);
             $products[$i]['company_name']   = $product->company_name;
             $products[$i]['is_favorite']   = $product->is_joined;
+            $products[$i]['user_id']   = $product->user_id;
+            
         }
 
         $userProduct = $products;
